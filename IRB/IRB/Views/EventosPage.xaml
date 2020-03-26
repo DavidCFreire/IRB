@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="IRB.Views.EventosPage">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource NavigationPrimary}"
+              VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Eventos"
+                   TextColor="White"
+                   Grid.Column="0" 
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand"
+                   FontAttributes="Bold"/>
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <CollectionView>
+            <CollectionView.EmptyView>
+                <Grid HorizontalOptions="Center" Padding="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0"
+                           HorizontalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                Size="100"
+                                Glyph="{x:Static fontawesome:FontAwesomeIcons.CalendarAlt}"
+                                Color="Gray"/>
+                        </Image.Source>
+                    </Image>
+                    <Label Grid.Row="1" 
+                           HorizontalOptions="Center"
+                           Text="Sem eventos ainda"
+                           FontSize="Subtitle"
+                           FontAttributes="Bold"/>
+                </Grid>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

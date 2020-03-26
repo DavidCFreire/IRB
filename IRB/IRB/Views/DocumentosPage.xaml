@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="IRB.Views.DocumentosPage">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource NavigationPrimary}"
+              VerticalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding TIPO}"
+                   TextColor="White"
+                   Grid.Column="0" 
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand"
+                   FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Image Grid.Column="1"
+                   Margin="0,8,0,0"
+                   VerticalOptions="Center">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Glyph="{x:Static fontawesome:FontAwesomeIcons.AngleDown}"
+                        Color="White"/>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <CollectionView>
+            <CollectionView.Header>
+                <Grid>
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Text="{Binding SubTitle}" TextColor="{StaticResource Black}" FontAttributes="Bold" FontSize="Title"/>
+                        <Label Text="{Binding Text}" TextColor="{StaticResource Black}" FontSize="Subtitle"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button BackgroundColor="{StaticResource White}" 
+                            FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AngleLeft}" />
+                    <Label Text="{Binding Title}" 
+                           Grid.Column="1"
+                           FontSize="Subtitle" 
+                           TextColor="{StaticResource Black}"
+                           HorizontalOptions="CenterAndExpand"/>
+                    <Button BackgroundColor="{StaticResource White}" 
+                            Grid.Column="2"
+                            FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AngleRight}" />
+                </Grid>
+            </CollectionView.Footer>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
