@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore;
 
-namespace IRB.Web
+namespace PadariaMarquesa.MobileAppService
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-          CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -17,6 +19,5 @@ namespace IRB.Web
                 .UseStartup<Startup>()
                 .UseKestrel()
                 .UseUrls("http://localhost:5005");
-
     }
 }

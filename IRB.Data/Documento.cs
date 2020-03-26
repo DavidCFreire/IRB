@@ -66,5 +66,25 @@ namespace IRB.Data
             }
         }
 
+        private string _referencia;
+        public string REFERENCIA
+        {
+            get => _referencia;
+            set
+            {
+                _referencia = value;
+            }
+        }
+
+        private string _parte;
+        public string PARTE
+        {
+            get => _parte;
+            set
+            {
+                _parte = value;
+            }
+        }
+
     }
 }

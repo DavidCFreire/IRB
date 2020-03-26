@@ -4,8 +4,25 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fontawesome="clr-namespace:FontAwesome"
+             xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
-             x:Class="IRB.Views.DocumentosPage">
+             x:Class="IRB.Views.DocumentosPage"
+             x:Name="myDocumentosPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Opçoes de Texto" Command="{Binding TextOptionsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.SlidersH}"
+                    Size="22"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <utils:TextNullToBool x:Key="textNullToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Shell.TitleView>
         <Grid BackgroundColor="{StaticResource NavigationPrimary}"
               VerticalOptions="CenterAndExpand">
@@ -14,13 +31,13 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label Text="{Binding TIPO}"
-                   TextColor="White"
+                   TextColor="{StaticResource TextLight}"
                    Grid.Column="0" 
                    FontSize="Medium"
                    VerticalOptions="CenterAndExpand"
                    FontAttributes="Bold">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer/>
+                    <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="documentos_lista"/>
                 </Label.GestureRecognizers>
             </Label>
             <Image Grid.Column="1"
@@ -33,46 +50,269 @@
                         Color="White"/>
                 </Image.Source>
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer />
+                    <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="documentos_lista"/>
                 </Image.GestureRecognizers>
             </Image>
         </Grid>
     </Shell.TitleView>
     <ContentPage.Content>
-        <CollectionView>
-            <CollectionView.Header>
-                <Grid>
-                </Grid>
-            </CollectionView.Header>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Label Text="{Binding SubTitle}" TextColor="{StaticResource Black}" FontAttributes="Bold" FontSize="Title"/>
-                        <Label Text="{Binding Text}" TextColor="{StaticResource Black}" FontSize="Subtitle"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalOptions="EndAndExpand" 
+                  Padding="16,4,16,0">
+                <Label Text="{Binding PARTE}" 
+                       HorizontalTextAlignment="End" 
+                       TextColor="{StaticResource TextDark}" 
+                       FontSize="{Binding PARTE_SIZE}" 
+                       FontAttributes="Italic"
+                       IsVisible="{Binding PARTE, Converter={StaticResource textNullToBoolConverter}}"
+                       IsEnabled="{Binding PARTE, Converter={StaticResource textNullToBoolConverter}}"/>
+            </Grid>
+            <CollectionView ItemsSource="{Binding ListLinhas}"
+                            Grid.Row="1">
+                <CollectionView.EmptyView>
+                    <Grid HorizontalOptions="Center" Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"
+                           HorizontalOptions="Center">
+                            <Image.Source>
+                                <FontImageSource
+                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                Size="60"
+                                Glyph="{x:Static fontawesome:FontAwesomeIcons.Sync}"
+                                Color="{StaticResource TextSecondaryDark}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Grid.Row="1" 
+                           HorizontalOptions="Center"
+                           Text="Continuando de onde parou..."
+                           FontSize="Subtitle"
+                           FontAttributes="Bold"
+                               TextColor="{StaticResource TextSecondaryDark}"/>
                     </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.Footer>
-                <Grid>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="16, 6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label TextColor="{StaticResource TextDark}"
+                                   HorizontalOptions="Fill"
+                                   FontSize="{Binding SUB_TITLE_SIZE}"
+                                   LineHeight="{Binding LINE_HEIGHT}"
+                                   FontAttributes="Bold"
+                                   Text="{Binding SUB_TITLE}"
+                                   HorizontalTextAlignment="{Binding ALIGNMENT}"
+                                   IsVisible="{Binding SUB_TITLE, Converter={StaticResource textNullToBoolConverter}}"
+                                   IsEnabled="{Binding SUB_TITLE, Converter={StaticResource textNullToBoolConverter}}">
+                            </Label>
+                            <Label HorizontalOptions="Fill"
+                                   Grid.Row="1" 
+                                   TextColor="{StaticResource TextDark}"
+                                   FontSize="{Binding TEXT_SIZE}"
+                                   LineHeight="{Binding LINE_HEIGHT}"
+                                   Text="{Binding TEXT}"
+                                   HorizontalTextAlignment="{Binding ALIGNMENT}"
+                                   IsVisible="{Binding TEXT, Converter={StaticResource textNullToBoolConverter}}"
+                                   IsEnabled="{Binding TEXT, Converter={StaticResource textNullToBoolConverter}}">
+                            </Label>
+                            <Label HorizontalOptions="Fill"
+                                   Grid.Row="2" 
+                                   TextColor="{StaticResource TextDark}"
+                                   FontSize="{Binding REFERENCIA_SIZE}"
+                                   LineHeight="{Binding LINE_HEIGHT}"
+                                   FontAttributes="Italic"
+                                   Text="{Binding REFERENCIA}"
+                                   HorizontalTextAlignment="{Binding ALIGNMENT}"
+                                   IsVisible="{Binding REFERENCIA, Converter={StaticResource textNullToBoolConverter}}"
+                                   IsEnabled="{Binding REFERENCIA, Converter={StaticResource textNullToBoolConverter}}">
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid Grid.Row="2"
+                  Padding="0,0,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button BackgroundColor="{StaticResource TextLight}" 
+                        FontFamily="{StaticResource FontAwesomeSolid}" 
+                        Text="{x:Static fontawesome:FontAwesomeIcons.AngleLeft}" 
+                        TextColor="{StaticResource TextDark}"
+                        HeightRequest="44"
+                        WidthRequest="44"
+                        CornerRadius="22"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding PreviousCommand}"/>
+                <Label Text="{Binding TITLE}" 
+                       Grid.Column="1"
+                       FontSize="{Binding TITLE_SIZE}" 
+                       TextColor="{StaticResource TextDark}"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"/>
+                <Button BackgroundColor="{StaticResource TextLight}" 
+                        Grid.Column="2"
+                        FontFamily="{StaticResource FontAwesomeSolid}" 
+                        Text="{x:Static fontawesome:FontAwesomeIcons.AngleRight}"
+                        TextColor="{StaticResource TextDark}"
+                        HeightRequest="44"
+                        WidthRequest="44"
+                        CornerRadius="22"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Command="{Binding NextCommand}"/>
+            </Grid>
+            <Grid x:Name="TextOptionsGrid" 
+                  Grid.Row="1"
+                  BackgroundColor="WhiteSmoke"
+                  Padding="16,10"
+                  VerticalOptions="End"
+                  PropertyChanged="TextOptionsGrid_PropertyChanged"
+                  IsEnabled="{Binding TextOptionsVisible}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalOptions="Center"
+                      Padding="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Button BackgroundColor="{StaticResource White}" 
-                            FontFamily="{StaticResource FontAwesomeSolid}" 
-                            Text="{x:Static fontawesome:FontAwesomeIcons.AngleLeft}" />
-                    <Label Text="{Binding Title}" 
-                           Grid.Column="1"
-                           FontSize="Subtitle" 
-                           TextColor="{StaticResource Black}"
-                           HorizontalOptions="CenterAndExpand"/>
-                    <Button BackgroundColor="{StaticResource White}" 
-                            Grid.Column="2"
-                            FontFamily="{StaticResource FontAwesomeSolid}" 
-                            Text="{x:Static fontawesome:FontAwesomeIcons.AngleRight}" />
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Font}"
+                            Grid.Column="0"
+                            FontSize="14"
+                            Command="{Binding DiminuirLetraCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Font}"
+                            Grid.Column="1"
+                            FontSize="18"
+                            Command="{Binding AumentarLetraCommand}"/>
                 </Grid>
-            </CollectionView.Footer>
-        </CollectionView>
+                <Grid HorizontalOptions="Center"
+                      Padding="6"
+                      Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.TextHeight}"
+                            FontSize="14"
+                            Command="{Binding DiminuirLineHeightCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.TextHeight}"
+                            FontSize="18"
+                            Grid.Column="1"
+                            Command="{Binding AumentarLineHeightCommand}"/>
+                </Grid>
+                <Grid HorizontalOptions="Center"
+                      Padding="6"
+                      Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AlignLeft}"
+                            Command="{Binding AlignLeftCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AlignCenter}"
+                            Grid.Column="1"
+                            Command="{Binding AlignCenterCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AlignRight}"
+                            Grid.Column="2"
+                            Command="{Binding AlignRightCommand}"/>
+                </Grid>
+                <!--<Frame HorizontalOptions="FillAndExpand"
+                       Padding="16"
+                       Grid.Row="3"
+                       BorderColor="{StaticResource SeparatorColor}"
+                       BackgroundColor="WhiteSmoke">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0"
+                              Padding="10,0"
+                              HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Fonte"
+                                   TextColor="Black"
+                                   FontAttributes="Bold"/>
+                            <Picker Title="Fonte"
+                                    Margin="-4,25,0,0"
+                                    HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                        <BoxView WidthRequest="1"
+                                 VerticalOptions="Fill"
+                                 BackgroundColor="LightGray"
+                                 Grid.Column="1"/>
+                        <Grid Grid.Column="2"
+                              Padding="10,0"
+                              HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Padrão Cores"
+                                   TextColor="Black"
+                                   Grid.ColumnSpan="2"
+                                   FontAttributes="Bold"/>
+                            <Button HeightRequest="40" 
+                                    WidthRequest="40"
+                                    CornerRadius="20" 
+                                    BackgroundColor="White"
+                                    Grid.Row="1"
+                                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
+                                    TextColor="Black"/>
+                            <Button HeightRequest="40" 
+                                    WidthRequest="40"
+                                    CornerRadius="20" 
+                                    BackgroundColor="Black"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource FontAwesomeSolid}" 
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
+                                    TextColor="White"/>
+                        </Grid>
+                    </Grid>
+                </Frame>-->
+
+            </Grid>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

@@ -3,12 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:IRB.ViewModels"
+             xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
              x:Class="IRB.App">
     <Application.Resources>
-        <Color x:Key="NavigationPrimary">#2196F3</Color>
+        <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
+        <utils:SelectedToFontAttributeConverter x:Key="cnvInvertFontAttribute"/>
+
+        <Color x:Key="NavigationPrimary">#795548</Color>
+        <Color x:Key="PrimaryDark">#5D4037</Color>
+        <Color x:Key="PrimaryLight">#D7CCC8</Color>
+        <Color x:Key="TextLight">#FFFFFF</Color>
+        <Color x:Key="Accent">#009688</Color>
+        <Color x:Key="TextDark">#212121</Color>
+        <Color x:Key="TextSecondaryDark">#757575</Color>
+        <Color x:Key="Divider">#BDBDBD</Color>
+
+
         <Color x:Key="White">#FFFFFF</Color>
         <Color x:Key="Black">#000000</Color>
+        <Color x:Key="FontBlack">#474747</Color>
+        <Color x:Key="SeparatorColor">LightGray</Color>
 
         <OnPlatform x:TypeArguments="x:String" 
                 x:Key="FontAwesomeBrands">
