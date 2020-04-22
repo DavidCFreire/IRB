@@ -7,6 +7,7 @@ namespace IRB.Services
     public interface INavigationService
     {
         void NavigateTo(object route);
+        void NavigateModalToDocumentosPage();
         void NavigateToAbsolute(string route);
     }
 }

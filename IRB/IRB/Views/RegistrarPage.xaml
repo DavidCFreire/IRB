@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="IRB.Views.RegistrarPage"
+             Title="Registrar-se">
+    <ContentPage.Content>
+        <Grid Padding="20,50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Usuario"
+                   TextColor="{StaticResource Accent}"/>
+            <Entry Grid.Row="1"
+                   Margin="0,-14,0,0"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="{StaticResource TextDark}"
+                   Text="{Binding Usuario}"/>
+            <Label Text="Email"
+                   Grid.Row="2"
+                   TextColor="{StaticResource Accent}"/>
+            <Entry Grid.Row="3"
+                   Margin="0,-14,0,0"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="{StaticResource TextDark}"
+                   Text="{Binding Email}"/>
+            <Label Grid.Row="4"
+                   Text="Senha"
+                   TextColor="{StaticResource Accent}"/>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Grid.ColumnSpan="2"
+                   Margin="0,-14,0,0"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="{StaticResource TextDark}"
+                   Text="{Binding Senha}"
+                   IsPassword="{Binding ViewPassword}"/>
+            </Grid>
+            <Label Grid.Row="6"
+                   Text="Repetir Senha"
+                   TextColor="{StaticResource Accent}"/>
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Grid.ColumnSpan="2"
+                   Margin="0,-14,0,0"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="{StaticResource TextDark}"
+                   Text="{Binding SenhaRepetir}"
+                   IsPassword="{Binding ViewPassword}"/>
+            </Grid>
+            <Grid Grid.Row="8" HeightRequest="60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Registrar"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding RegistrarCommand}"
+                    BorderColor="{StaticResource Accent}"
+                    BorderWidth="2"
+                    BackgroundColor="White"
+                    TextColor="{StaticResource Accent}"
+                    CornerRadius="30"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   HorizontalOptions="End"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

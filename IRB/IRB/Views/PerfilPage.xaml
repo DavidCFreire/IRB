@@ -3,29 +3,354 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
              mc:Ignorable="d"
              x:Class="IRB.Views.PerfilPage"
-             Title="Perfil">
-    <Shell.TitleView>
-        <Grid BackgroundColor="{StaticResource NavigationPrimary}"
-              VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Perfil"
-                   TextColor="White"
-                   Grid.Column="0" 
-                   FontSize="Medium"
-                   VerticalOptions="CenterAndExpand"
-                   FontAttributes="Bold"/>
-        </Grid>
-    </Shell.TitleView>
+             Title="Mais">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Perfil"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <TableView Intent="Settings" HasUnevenRows="True">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell>
+                        <Grid Padding="16,26">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeRegular}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.UserCircle}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid Grid.Column="1"
+                                  VerticalOptions="Center"
+                                  Padding="5,0" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label FontAttributes="Bold"
+                                   Text="{Binding Usuario}"
+                                   TextColor="{StaticResource TextDark}"
+                                   FontSize="Large"/>
+                                <Label Grid.Row="1"
+                                       Text="{Binding Email}"
+                                       TextColor="{StaticResource Accent}"
+                                       FontSize="Micro"/>
+                            </Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PerfilCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeBrands}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Diaspora}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Alterar Senha"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PerfilCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.SignOutAlt}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Sair"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SairCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Geral">
+                    <ViewCell>
+                        <Grid Padding="16,16,0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Wifi}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label FontAttributes="None"
+                                   Text="Modo Offline"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                                <ActivityIndicator Grid.Column="1"
+                                                   IsRunning="{Binding IsBusy}"
+                                                   HeightRequest="5"/>
+                                <Switch Grid.Column="2"
+                                        IsToggled="{Binding ModoOffline}"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16,16,0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Sync}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label FontAttributes="None"
+                                   Text="Atualizar Automaticamente"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                                <Button HeightRequest="16"
+                                        WidthRequest="40"
+                                        CornerRadius="20"
+                                        Margin="-10"
+                                        BackgroundColor="White"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource FontAwesomeRegular}"
+                                        Text="{x:Static fontawesome:FontAwesomeIcons.QuestionCircle}"
+                                        TextColor="{StaticResource TextDark}"
+                                        Command="{Binding MessageCommand}"
+                                        CommandParameter="Essa função habilita a verificação de atualizações nos documentos baixados.&#10;&#10;Sempre que houver uma atualização o app baixará automaticamente, caso esta opção esteja ativa.">
+                                </Button>
+                                <Switch Grid.Column="2"
+                                        IsToggled="{Binding ModoAutoSync}"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <!--<TableSection Title="Tema">
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Adjust}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Modo"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Palette}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Cor"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+
+                <TableSection Title="Sobre">
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.ShareAlt}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Compartilhar o IRB Docs"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Star}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Avaliar o IRB Docs"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Bug}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Relatar Problema/Erro"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.InfoCircle}"
+                                        Color="{StaticResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Label FontAttributes="None"
+                                   Text="Sobre o App"
+                                   TextColor="{StaticResource TextDark}"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>-->
+
+            </TableRoot>
+        </TableView>
     </ContentPage.Content>
 </ContentPage>

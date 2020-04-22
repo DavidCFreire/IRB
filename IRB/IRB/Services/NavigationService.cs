@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IRB.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,13 @@ namespace IRB.Services
     {
         public async void NavigateTo(object route)
         {
-            if(route.ToString() == "..")
+            if (route.ToString() == "..")
             {
                 await Shell.Current.Navigation.PopToRootAsync();
+            }
+            else if(route.ToString() == ".")
+            {
+                await Shell.Current.Navigation.PopAsync();
             }
             else
             {
@@ -23,6 +28,10 @@ namespace IRB.Services
                 await Shell.Current.GoToAsync($"{state.Location}/{route.ToString()}");
                 //Shell.Current.FlyoutIsPresented = false;
             }
+        }
+        public async void NavigateModalToDocumentosPage()
+        {
+            await Shell.Current.Navigation.PushModalAsync(new DocumentosPage());
         }
 
         public async void NavigateToPassing(object route, object viewModel)

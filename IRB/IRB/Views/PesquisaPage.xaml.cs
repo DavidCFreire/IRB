@@ -15,6 +15,7 @@ namespace IRB.Views
         public PesquisaPage()
         {
             InitializeComponent();
+            BindingContext = App.vmLocator.Pesquisa;
         }
     }
 }

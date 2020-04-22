@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utils="clr-namespace:IRB.Utils"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="IRB.Views.CredoNicenoPage"
+             Title="{Binding TIPO}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Opçoes de Texto" Command="{Binding TextOptionsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.SlidersH}"
+                    Size="22"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <utils:TextNullToBool x:Key="textNullToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <CollectionView ItemsSource="{Binding ListLinhas}"
+                            Grid.Row="1">
+                <CollectionView.EmptyView>
+                    <Grid HorizontalOptions="Center" Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--<Image Grid.Row="0"
+                           HorizontalOptions="Center">
+                            <Image.Source>
+                                <FontImageSource
+                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                Size="60"
+                                Glyph="{x:Static fontawesome:FontAwesomeIcons.Sync}"
+                                Color="{StaticResource TextSecondaryDark}"/>
+                            </Image.Source>
+                        </Image>-->
+                        <ActivityIndicator Grid.Row="0"
+                                           IsVisible="{Binding Retornando}"
+                                           IsRunning="{Binding IsBusy}"/>
+                        <Label Grid.Row="1" 
+                               IsVisible="{Binding Retornando}"
+                           HorizontalOptions="Center"
+                           Text="Continuando de onde parou..."
+                           FontSize="Subtitle"
+                           FontAttributes="Bold"
+                               TextColor="{StaticResource TextSecondaryDark}"/>
+                    </Grid>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="16, 6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label TextColor="{StaticResource TextDark}"
+                                   HorizontalOptions="Fill"
+                                   FontSize="{Binding SUB_TITLE_SIZE}"
+                                   LineHeight="{Binding LINE_HEIGHT}"
+                                   FontAttributes="Bold"
+                                   Text="{Binding SUB_TITLE}"
+                                   HorizontalTextAlignment="{Binding ALIGNMENT}"
+                                   IsVisible="{Binding SUB_TITLE, Converter={StaticResource textNullToBoolConverter}}"
+                                   IsEnabled="{Binding SUB_TITLE, Converter={StaticResource textNullToBoolConverter}}">
+                            </Label>
+                            <Label HorizontalOptions="Fill"
+                                   Grid.Row="1" 
+                                   TextColor="{StaticResource TextDark}"
+                                   FontSize="{Binding TEXT_SIZE}"
+                                   LineHeight="{Binding LINE_HEIGHT}"
+                                   Text="{Binding TEXT}"
+                                   HorizontalTextAlignment="{Binding ALIGNMENT}"
+                                   IsVisible="{Binding TEXT, Converter={StaticResource textNullToBoolConverter}}"
+                                   IsEnabled="{Binding TEXT, Converter={StaticResource textNullToBoolConverter}}">
+                            </Label>
+                            <Label HorizontalOptions="Fill"
+                                   Grid.Row="2" 
+                                   TextColor="{StaticResource TextDark}"
+                                   FontSize="{Binding REFERENCIA_SIZE}"
+                                   LineHeight="{Binding LINE_HEIGHT}"
+                                   FontAttributes="Italic"
+                                   Text="{Binding REFERENCIA}"
+                                   HorizontalTextAlignment="{Binding ALIGNMENT}"
+                                   IsVisible="{Binding REFERENCIA, Converter={StaticResource textNullToBoolConverter}}"
+                                   IsEnabled="{Binding REFERENCIA, Converter={StaticResource textNullToBoolConverter}}">
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid x:Name="TextOptionsGrid" 
+                  Grid.Row="1"
+                  BackgroundColor="WhiteSmoke"
+                  Padding="16,10"
+                  VerticalOptions="End"
+                  PropertyChanged="TextOptionsGrid_PropertyChanged"
+                  IsEnabled="{Binding TextOptionsVisible}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalOptions="Center"
+                      Padding="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Font}"
+                            Grid.Column="0"
+                            FontSize="14"
+                            Command="{Binding DiminuirLetraCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Font}"
+                            Grid.Column="1"
+                            FontSize="18"
+                            Command="{Binding AumentarLetraCommand}"/>
+                </Grid>
+                <Grid HorizontalOptions="Center"
+                      Padding="6"
+                      Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.TextHeight}"
+                            FontSize="14"
+                            Command="{Binding DiminuirLineHeightCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.TextHeight}"
+                            FontSize="18"
+                            Grid.Column="1"
+                            Command="{Binding AumentarLineHeightCommand}"/>
+                </Grid>
+                <Grid HorizontalOptions="Center"
+                      Padding="6"
+                      Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AlignLeft}"
+                            Command="{Binding AlignLeftCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AlignCenter}"
+                            Grid.Column="1"
+                            Command="{Binding AlignCenterCommand}"/>
+                    <Button FontFamily="{StaticResource FontAwesomeSolid}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AlignRight}"
+                            Grid.Column="2"
+                            Command="{Binding AlignRightCommand}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

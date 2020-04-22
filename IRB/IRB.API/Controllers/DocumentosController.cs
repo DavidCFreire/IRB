@@ -33,6 +33,12 @@ namespace IRB.API.Controllers
             return new ObjectResult(item);
         }
 
+        [HttpGet("{version}")]
+        public IEnumerable<Documento> GetByVersion(int version)
+        {
+            return repo.GetByVersion(version);
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] Documento item)
         {
@@ -49,6 +55,8 @@ namespace IRB.API.Controllers
             if (item == null || item.PK != pk)
                 BadRequest();
 
+            var current = repo.Get(item.PK);
+            item.VERSAO = current.VERSAO + 1;
             repo.Update(item);
             return new NoContentResult();
         }

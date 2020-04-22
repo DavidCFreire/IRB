@@ -4,27 +4,33 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="IRB.Views.PesquisaPage">
-    <Shell.TitleView>
-        <Grid BackgroundColor="{StaticResource NavigationPrimary}"
-              VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Pesquisa"
-                   TextColor="White"
-                   Grid.Column="0" 
-                   FontSize="Medium"
-                   VerticalOptions="CenterAndExpand"
-                   FontAttributes="Bold"/>
-        </Grid>
-    </Shell.TitleView>
+             x:Class="IRB.Views.PesquisaPage"
+             Title="Pesquisa">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Pesquisa"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Padding="0,2,4,16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <SearchBar/>
+                    <CollectionView Grid.Row="1">
+                        <CollectionView.Header>
+                            <Label Text="Categorias"
+                                   TextColor="{StaticResource TextDark}"
+                                   FontAttributes="Bold"/>
+                        </CollectionView.Header>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

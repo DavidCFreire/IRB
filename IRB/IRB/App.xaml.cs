@@ -22,6 +22,7 @@ namespace IRB
         {
             InitializeComponent();
             DependencyService.Register<INavigationService, NavigationService>();
+            DependencyService.Register<IMessageService, MessageService>();
 
             MainPage = new AppShell();
         }

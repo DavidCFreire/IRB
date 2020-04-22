@@ -43,5 +43,10 @@ namespace IRB.API.Models
             _context.DOCUMENTOS.Update(item);
             _context.SaveChanges();
         }
+
+        public IEnumerable<Documento> GetByVersion(int version)
+        {
+            return _context.DOCUMENTOS.Where(x => x.VERSAO > version).ToList();
+        }
     }
 }

@@ -15,12 +15,12 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Accent}" />
                 <Setter Property="Shell.ForegroundColor" Value="{StaticResource TextLight}" />
                 <Setter Property="Shell.TitleColor" Value="{StaticResource TextLight}" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Accent}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TextLight}"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource TextLight}"/>
@@ -30,7 +30,13 @@
     </Shell.Resources>
 
     <!-- Your Pages -->
-    <TabBar Route="MainTab">
+    <FlyoutItem Route="InicioFly" Title="Inicio">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Home}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
         <Tab Title="Inicio"
              Route="InicioTab">
             <Tab.Icon>
@@ -40,26 +46,7 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:InicioPage}" />
         </Tab>
-        <Tab Title="Ler"
-             Route="DocumentoTab">
-            <Tab.Icon>
-                <FontImageSource
-                    FontFamily="{StaticResource FontAwesomeSolid}"
-                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Stream}"/>
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:DocumentosPage}"
-                          Route="DocumentoContent"/>
-        </Tab>
-        <Tab Title="Pesquisa"
-             Route="PesquisaTab">
-            <Tab.Icon>
-                <FontImageSource
-                    FontFamily="{StaticResource FontAwesomeSolid}"
-                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Search}"/>
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:PesquisaPage}" />
-        </Tab>
-        <Tab Title="Eventos"
+        <!--<Tab Title="Eventos"
              Route="EventosTab">
             <Tab.Icon>
                 <FontImageSource
@@ -67,18 +54,241 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.CalendarAlt}"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:EventosPage}" />
+        </Tab>-->
+    </FlyoutItem>
+    <FlyoutItem Title="Pesquisa" Route="PesquisaFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Search}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Pesquisa"
+             Route="PesquisaTab">
+            <ShellContent ContentTemplate="{DataTemplate local:PesquisaPage}" />
         </Tab>
-        <Tab Title="Perfil"
-             Route="PerfilTab">
+
+    </FlyoutItem>
+    <FlyoutItem Title="Confissão Belga" Route="ConfBelgaFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeRegular}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Bookmark}"
+                Color="{StaticResource TextDark}" />
+        </FlyoutItem.Icon>
+        <Tab Title="Ler"
+             Route="ConfBelgaTab">
+            <ShellContent ContentTemplate="{DataTemplate local:ConfBelgaPage}"
+                          Route="ConfBelgaContent"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Catecismo de Heidelberg" Route="CatHeidelbergFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.ChalkboardTeacher}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Parte"
+             Route="CatHeidelbergITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="I"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIPage}"
+                          Route="CatHeidelbergIContent"/>
+        </Tab>
+        <Tab Title="Parte"
+             Route="CatHeidelbergIITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="II"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIIPage}"
+                          Route="CatHeidelbergIIContent"/>
+        </Tab>
+        <Tab Title="Parte"
+             Route="CatHeidelbergIIITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="III"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIIIPage}"
+                          Route="CatHeidelbergIIIContent"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Cânones de Dort" Route="CanDortFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Gavel}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Capítulo"
+             Route="CanDortITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="I"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:DortIPage}"
+                          Route="CanDortIContent"/>
+        </Tab>
+        <Tab Title="Capítulo"
+             Route="CanDortIITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="II"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:DortIIPage}"
+                          Route="CanDortIIContent"/>
+        </Tab>
+        <Tab Title="Capítulo"
+             Route="CanDortIIITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="III-IV"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:DortIIIPage}"
+                          Route="CanDortIIIContent"/>
+        </Tab>
+        <Tab Title="Capítulo"
+             Route="CanDortVTab">
+            <Tab.Icon>
+                <FontImageSource Glyph="V"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:DortVPage}"
+                          Route="CanDortVContent"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Hinário" Route="HinarioFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.RecordVinyl}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="H. Maceió"
+             Route="HinarioMaceioTab">
             <Tab.Icon>
                 <FontImageSource
-                    FontFamily="{StaticResource FontAwesomeRegular}"
-                    Glyph="{x:Static fontawesome:FontAwesomeIcons.UserCircle}"/>
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.RecordVinyl}"/>
             </Tab.Icon>
+            <ShellContent Title="Salmos"
+                          ContentTemplate="{DataTemplate local:HinMaceioSalmosPage}"
+                          Route="HinMaceioSalmosContent"/>
+            <ShellContent Title="Hinos"
+                          ContentTemplate="{DataTemplate local:HinMaceioHinosPage}"
+                          Route="HinMaceioHinosContent"/>
+        </Tab>
+        <Tab Title="H. IPSEP"
+             Route="HinarioIPSEPTab">
+            <Tab.Icon>
+                <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.RecordVinyl}"/>
+            </Tab.Icon>
+            <ShellContent Title="Salmos"
+                          ContentTemplate="{DataTemplate local:HinIPSEPSalmosPage}"
+                          Route="HinIPSEPSalmosContent"/>
+            <ShellContent Title="Hinos"
+                          ContentTemplate="{DataTemplate local:HinIPSEPHinos}"
+                          Route="HinIPSEPHinosContent"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Credos" Route="CredosFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Cross}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Apostólico"
+             Route="CredoAposTab">
+            <Tab.Icon>
+                <FontImageSource Glyph="A"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:CredoApostolicoPage}"
+                          Route="CredoAposContent"/>
+        </Tab>
+        <Tab Title="Niceno"
+             Route="CredosNincTab">
+            <Tab.Icon>
+                <FontImageSource Glyph="N"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:CredoNicenoPage}"
+                          Route="CredosNincContent"/>
+        </Tab>
+        <Tab Title="Atanasiano"
+             Route="CredoAtanTab">
+            <Tab.Icon>
+                <FontImageSource Glyph="AT"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:CredoAtanasianoPage}"
+                          Route="CredoAtanContent"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Regimento" Route="RegimentoFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.PlaceOfWorship}"
+                Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Capítulo"
+             Route="RegimentoITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="I"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:RegimentoIPage}"
+                          Route="RegimentoIContent"/>
+        </Tab>
+        <Tab Title="Capítulo"
+             Route="RegimentoIITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="II"/>
+            </Tab.Icon>
+
+            <ShellContent ContentTemplate="{DataTemplate local:RegimentoIIPage}"
+                          Route="RegimentoIIContent"/>
+        </Tab>
+        <Tab Title="Capítulo"
+             Route="RegimentoIIITab">
+            <Tab.Icon>
+                <FontImageSource Glyph="III"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:RegimentoIIIPage}"
+                          Route="RegimentoIIIContent"/>
+        </Tab>
+        <Tab Title="Capítulo"
+             Route="RegimentoIVTab">
+            <Tab.Icon>
+                <FontImageSource Glyph="IV"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:RegimentoIVPage}"
+                          Route="RegimentoIVContent"/>
+        </Tab>
+
+        <Tab Title="Capítulo"
+             Route="RegimentoVTab">
+            <Tab.Icon>
+                <FontImageSource Glyph="V"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:RegimentoVPage}"
+                          Route="RegimentoVContent"/>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Mais" Route="MaisFly">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.EllipsisH}"
+                             Color="{StaticResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Mais"
+             Route="MaisTab">
             <ShellContent ContentTemplate="{DataTemplate local:PerfilPage}" />
         </Tab>
-    </TabBar>
-
+    </FlyoutItem>
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.
 

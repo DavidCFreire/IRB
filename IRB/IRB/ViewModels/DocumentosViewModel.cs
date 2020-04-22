@@ -1,6 +1,7 @@
 ﻿using IRB.Data;
 using IRB.Models;
 using IRB.Utils;
+using IRB.Views;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,45 @@ namespace IRB.ViewModels
     {
         public DocumentosViewModel()
         {
-            CarregarPagina();
+            //CarregarPagina();
+        }
+        public string _pageName;
+        public string _parteFiltro;
+        public bool _linhas;
+        public int _pkUp;
+        public async Task SelecionarDocumento(string pageName, string parte = "", bool linhas = false, int pkUp = 0)
+        {
+            _pageName = pageName;
+            _parteFiltro = parte;
+            _linhas = linhas;
+            _pkUp = pkUp;
+            if (ListDocumentos != null && ListDocumentos.Count > 0 && pkUp == 0)
+            {
+                if (string.IsNullOrEmpty(parte))
+                {
+                    LivroSelected = ListDocumentos.Where(x => x.TIPO == pageName).FirstOrDefault();
+                }
+                else
+                {
+                    LivroSelected = ListDocumentos.Where(x => x.TIPO == pageName && x.PARTE.Contains(parte)).FirstOrDefault();
+                }
+            }
+            else
+            {
+                if (IsBusy)
+                    return;
+
+                IsBusy = true;
+
+                await LoadLivros();
+            }
+        }
+
+        private bool _retornando = false;
+        public bool Retornando
+        {
+            get => _retornando;
+            set => SetProperty(ref _retornando, value);
         }
 
         private async void CarregarPagina()
@@ -27,15 +66,19 @@ namespace IRB.ViewModels
                 return;
 
             IsBusy = true;
+            //string savedJson = Preferences.Get(Settings.CapituloSalvo, string.Empty);
+            //if (!string.IsNullOrEmpty(savedJson))
+            //    Retornando = true;
+            //else
+            //    Retornando = false;
             await LoadLivros();
-            string savedJson = Preferences.Get(Settings.CapituloSalvo, string.Empty);
-            if (!string.IsNullOrEmpty(savedJson))
-            {
-                saved = JsonConvert.DeserializeObject<DocumentoListCellModel>(savedJson);
-                LivroSelected = saved;
-                //var cs = _listDocumentos.Where(i => i.PK == saved.PK).FirstOrDefault();
-                //CapituloSelected = cs;
-            }
+            //if (!string.IsNullOrEmpty(savedJson))
+            //{
+            //    saved = JsonConvert.DeserializeObject<DocumentoListCellModel>(savedJson);
+            //    LivroSelected = saved;
+            //    //var cs = _listDocumentos.Where(i => i.PK == saved.PK).FirstOrDefault();
+            //    //CapituloSelected = cs;
+            //}
         }
         DocumentoListCellModel saved;
 
@@ -48,58 +91,88 @@ namespace IRB.ViewModels
             get { return _listCapitulos ?? (_listCapitulos = new ObservableCollection<DocumentoListCellGrouped>()); }
             set { SetProperty(ref _listCapitulos, value); }
         }
+        private ObservableCollection<DocumentoListCellModel> _listCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>();
+        public ObservableCollection<DocumentoListCellModel> ListCapitulosNonGrouped
+        {
+            get { return _listCapitulosNonGrouped ?? (_listCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>()); }
+            set { SetProperty(ref _listCapitulosNonGrouped, value); }
+        }
         //RefreshCommand
         public ICommand RefreshCapitulosCommand => new Command(async () => await LoadCapitulos());
 
         async Task LoadCapitulos()
         {
-            ListCapitulos.Clear();
-            List<DocumentoListCellGrouped> listCapitulos = new List<DocumentoListCellGrouped>();
-            foreach(var g in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO).OrderBy(x => x.NUMERO))
+            if(_listAllDocumentos != null)
             {
-                var exist = listCapitulos.Where(x => x.PARTE == g.PARTE).FirstOrDefault();
-                if (exist == null)
+                ListCapitulos.Clear();
+                List<DocumentoListCellGrouped> listCapitulos = new List<DocumentoListCellGrouped>();
+                List<DocumentoListCellModel> listCapitulosNonGrouped = new List<DocumentoListCellModel>();
+                foreach (var g in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO).OrderBy(x => x.NUMERO))
                 {
-                    List<DocumentoListCellModel> list = new List<DocumentoListCellModel>();
-                    foreach (var i in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO && x.PARTE == g.PARTE).OrderBy(x => x.NUMERO))
+                    var exist = listCapitulos.Where(x => x.PARTE == g.PARTE).FirstOrDefault();
+                    if (exist == null)
                     {
-                        DocumentoListCellModel item = new DocumentoListCellModel()
+                        List<DocumentoListCellModel> list = new List<DocumentoListCellModel>();
+                        foreach (var i in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO && x.PARTE == g.PARTE).OrderBy(x => x.NUMERO))
                         {
-                            PK = i.PK,
-                            PARTE = i.PARTE,
-                            NUMERO = i.NUMERO,
-                            REFERENCIA = i.REFERENCIA,
-                            SUB_TITLE = i.SUB_TITLE,
-                            TEXT = i.TEXT,
-                            TIPO = i.TIPO,
-                            TITLE = i.TITLE,
-                            ATTRIBUTES = FontAttributes.None,
-                            LINE_HEIGHT = LINE_HEIGHT,
-                            REFERENCIA_SIZE = REFERENCIA_SIZE,
-                            SUB_TITLE_SIZE = SUB_TITLE_SIZE,
-                            TEXT_SIZE = TEXT_SIZE,
-                            ALIGNMENT = ALIGNMENT
-                        };
-                        var exist2 = list.Where(x => x.TITLE == item.TITLE).FirstOrDefault();
-                        if (exist2 == null)
-                            list.Add(item);
+                            DocumentoListCellModel item = new DocumentoListCellModel()
+                            {
+                                PK = i.PK,
+                                PARTE = i.PARTE,
+                                NUMERO = i.NUMERO,
+                                REFERENCIA = i.REFERENCIA,
+                                SUB_TITLE = i.SUB_TITLE,
+                                TEXT = i.TEXT,
+                                TIPO = i.TIPO,
+                                TITLE = i.TITLE,
+                                ATTRIBUTES = FontAttributes.None,
+                                LINE_HEIGHT = LINE_HEIGHT,
+                                REFERENCIA_SIZE = REFERENCIA_SIZE,
+                                SUB_TITLE_SIZE = SUB_TITLE_SIZE,
+                                TEXT_SIZE = TEXT_SIZE,
+                                ALIGNMENT = ALIGNMENT
+                            };
+                            var exist2 = list.Where(x => x.TITLE == item.TITLE).FirstOrDefault();
+                            if (exist2 == null)
+                            {
+                                list.Add(item);
+                                listCapitulosNonGrouped.Add(item);
+                            }
+                        }
+                        DocumentoListCellGrouped dg = new DocumentoListCellGrouped(g.PARTE, list);
+                        listCapitulos.Add(dg);
                     }
-                    DocumentoListCellGrouped dg = new DocumentoListCellGrouped(g.PARTE, list);
-                    listCapitulos.Add(dg);
                 }
+                ListCapitulos = new ObservableCollection<DocumentoListCellGrouped>(listCapitulos);
+                if (string.IsNullOrEmpty(_parteFiltro))
+                {
+                    ListCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>(listCapitulosNonGrouped);
+                }
+                else
+                {
+                    ListCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>(listCapitulosNonGrouped.Where(x => x.PARTE.Contains(_parteFiltro)));
+                }
+                if (saved != null && saved.PK > 0)
+                {
+                    //DocumentoListCellModel cs = ListCapitulos.Where(x => x.PK == saved.PK).FirstOrDefault();
+                    DocumentoListCellGrouped dlcg = ListCapitulos.Where(x => x.PARTE == saved.PARTE).FirstOrDefault();
+                    DocumentoListCellModel cs = dlcg.Where(x => x.PK == saved.PK).FirstOrDefault();
+                    CapituloSelected = cs;
+                }
+                if (_linhas)
+                    CapituloSelected = ListCapitulosNonGrouped.FirstOrDefault();
+                else
+                {
+                    if (_pkUp > 0)
+                    {
+                        CapituloSelected = listCapitulosNonGrouped.Where(x => x.PK == _pkUp).FirstOrDefault();
+                    }
+                }
+                IsBusy = false;
             }
-            ListCapitulos = new ObservableCollection<DocumentoListCellGrouped>(listCapitulos);
-            if(saved != null && saved.PK > 0)
-            {
-                //DocumentoListCellModel cs = ListCapitulos.Where(x => x.PK == saved.PK).FirstOrDefault();
-                DocumentoListCellGrouped dlcg = ListCapitulos.Where(x => x.PARTE == saved.PARTE).FirstOrDefault();
-                DocumentoListCellModel cs = dlcg.Where(x => x.PK == saved.PK).FirstOrDefault();
-                CapituloSelected = cs;
-            }
-            IsBusy = false;
         }
 
-        private DocumentoListCellModel _capituloSelected;
+        public DocumentoListCellModel _capituloSelected;
         public DocumentoListCellModel CapituloSelected
         {
             get => null;
@@ -184,11 +257,15 @@ namespace IRB.ViewModels
         async Task LoadLivros()
         {
             ListDocumentos.Clear();
-            _listAllDocumentos = await API.GetAllDocumentos();
+            if (ModoOffline)
+                _listAllDocumentos = DbHelper.GetAllDocumentos();
+            else 
+                _listAllDocumentos = await API.GetAllDocumentos();
+
             List<DocumentoListCellModel> listLivros = new List<DocumentoListCellModel>();
             foreach (var item in _listAllDocumentos.OrderBy(x => x.TIPO))
             {
-                var exist = listLivros.Where(x => x.TIPO == item.TIPO).FirstOrDefault();
+                var exist = listLivros.Where(x => x.TIPO == item.TIPO && x.PARTE == item.PARTE).FirstOrDefault();
                 if (exist == null)
                 {
                     DocumentoListCellModel i = new DocumentoListCellModel()
@@ -207,6 +284,14 @@ namespace IRB.ViewModels
                 }
             }
             ListDocumentos = new ObservableCollection<DocumentoListCellModel>(listLivros);
+            if (string.IsNullOrEmpty(_parteFiltro))
+            {
+                LivroSelected = ListDocumentos.Where(x => x.TIPO == _pageName).FirstOrDefault();
+            }
+            else
+            {
+                LivroSelected = ListDocumentos.Where(x => x.TIPO == _pageName && x.PARTE.Contains(_parteFiltro)).FirstOrDefault();
+            }
             IsBusy = false;
         }
 
@@ -281,7 +366,7 @@ namespace IRB.ViewModels
             get => _parteSelected;
             set => SetProperty(ref _parteSelected, value);
         }
-        private string _tipoSelected = "Documentos";
+        private string _tipoSelected = "";
         public string TIPO
         {
             get => _tipoSelected;

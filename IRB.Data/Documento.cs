@@ -85,6 +85,15 @@ namespace IRB.Data
                 _parte = value;
             }
         }
+        private int _versao;
+        public int VERSAO
+        {
+            get => _versao;
+            set
+            {
+                _versao = value;
+            }
+        }
 
     }
 }

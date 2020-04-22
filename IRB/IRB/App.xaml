@@ -11,11 +11,11 @@
         <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
         <utils:SelectedToFontAttributeConverter x:Key="cnvInvertFontAttribute"/>
 
-        <Color x:Key="NavigationPrimary">#795548</Color>
-        <Color x:Key="PrimaryDark">#5D4037</Color>
-        <Color x:Key="PrimaryLight">#D7CCC8</Color>
+        <Color x:Key="NavigationPrimary">#2196F3</Color>
+        <Color x:Key="PrimaryDark">#1976D2</Color>
+        <Color x:Key="PrimaryLight">#2196F3</Color>
         <Color x:Key="TextLight">#FFFFFF</Color>
-        <Color x:Key="Accent">#009688</Color>
+        <Color x:Key="Accent">#1565C0</Color>
         <Color x:Key="TextDark">#212121</Color>
         <Color x:Key="TextSecondaryDark">#757575</Color>
         <Color x:Key="Divider">#BDBDBD</Color>

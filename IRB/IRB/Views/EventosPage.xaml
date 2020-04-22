@@ -5,22 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fontawesome="clr-namespace:FontAwesome"
              mc:Ignorable="d"
-             x:Class="IRB.Views.EventosPage">
-    <Shell.TitleView>
-        <Grid BackgroundColor="{StaticResource NavigationPrimary}"
-              VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Eventos"
-                   TextColor="White"
-                   Grid.Column="0" 
-                   FontSize="Medium"
-                   VerticalOptions="CenterAndExpand"
-                   FontAttributes="Bold"/>
-        </Grid>
-    </Shell.TitleView>
+             x:Class="IRB.Views.EventosPage"
+             Title="IRB Docs">
     <ContentPage.Content>
         <CollectionView>
             <CollectionView.EmptyView>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IRB.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,13 @@ namespace IRB.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CapitulosListaPage : ContentPage
     {
+        DocumentosViewModel vm = App.vmLocator.Documentos;
+
         public CapitulosListaPage()
         {
             InitializeComponent();
-            BindingContext = App.vmLocator.Documentos;
+            BindingContext = vm;
+            
         }
     }
 }

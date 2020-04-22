@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="IRB.Views.EntrarPage"
+             Title="Entrar"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <Grid Padding="20,50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="Usuario"
+                   TextColor="{StaticResource Accent}"/>
+            <Entry Grid.Row="1"
+                   Margin="0,-14,0,0"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="{StaticResource TextDark}"
+                   Text="{Binding Usuario}"/>
+            <Label Grid.Row="2"
+                   Text="Senha"
+                   TextColor="{StaticResource Accent}"/>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Entry Grid.ColumnSpan="2"
+                   Margin="0,-14,0,0"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="{StaticResource TextDark}"
+                   Text="{Binding Senha}"
+                   IsPassword="{Binding ViewPassword}"/>
+            </Grid>
+            <Grid Grid.Row="4" HeightRequest="60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Entrar"
+                    Grid.ColumnSpan="2"
+                    Command="{Binding EntrarCommand}"
+                    BorderColor="{StaticResource Accent}"
+                    BorderWidth="2"
+                    BackgroundColor="White"
+                    TextColor="{StaticResource Accent}"
+                    CornerRadius="30"/>
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   HorizontalOptions="End"/>
+            </Grid>
+            <Label Text="Entre com"
+                   Grid.Row="5"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource TextDark}"/>
+            <Grid Grid.Row="6"
+                  HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button FontFamily="{StaticResource FontAwesomeBrands}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Google}"
+                            Command="{Binding GoogleLogin}"
+                        BackgroundColor="White"/>
+                <Button FontFamily="{StaticResource FontAwesomeBrands}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Microsoft}"
+                            Command="{Binding MicrosoftLogin}"
+                        Grid.Column="1"
+                        BackgroundColor="White"/>
+                <Button FontFamily="{StaticResource FontAwesomeBrands}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Facebook}"
+                            Command="{Binding FacebookLogin}"
+                        Grid.Column="2"
+                        BackgroundColor="White"/>
+                <Button FontFamily="{StaticResource FontAwesomeBrands}" 
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Instagram}"
+                            Command="{Binding InstagramLogin}"
+                        Grid.Column="3"
+                        BackgroundColor="White"/>
+            </Grid>
+            <Label Grid.Row="7"
+                   HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Caso não tenha conta, "
+                              TextColor="{StaticResource TextDark}"/>
+                        <Span Text="registre-se"
+                              TextColor="{StaticResource Accent}"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="registrar"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

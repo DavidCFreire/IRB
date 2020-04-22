@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="IRB.Views.DocumentoEditarPage"
+             Title="Editando Documento"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar Documento" Command="{Binding SalvarCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeRegular}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.CheckCircle}"
+                    Size="22"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Padding="16" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ActivityIndicator IsRunning="{Binding IsBusy}"
+                                   HorizontalOptions="Center"
+                                   HeightRequest="5"/>
+                <Label Text="Titulo"
+                       TextColor="{StaticResource Accent}"
+                       Margin="0,0,0,-8"/>
+                <Entry Text="{Binding TITLE}"
+                       Grid.Row="1"
+                       TextColor="{StaticResource TextDark}"
+                       Placeholder="Titulo Documento"/>
+                <Label Text="Detalhe"
+                       Grid.Row="2"
+                       TextColor="{StaticResource Accent}"
+                       Margin="0,0,0,-8"/>
+                <Entry Text="{Binding PARTE}" 
+                       Grid.Row="3"
+                       TextColor="{StaticResource TextDark}"
+                       Placeholder="Detalhe Documento"/>
+            </Grid>
+            <CollectionView ItemsSource="{Binding ListLinhas}"
+                            Grid.Row="1">
+                <CollectionView.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Linhas"
+                               Margin="16,0,0,0"
+                               TextColor="{StaticResource Accent}"/>
+                        <BoxView BackgroundColor="{StaticResource Accent}" 
+                                 HeightRequest="1" 
+                                 Grid.Row="1"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="16, 6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Editor TextColor="{StaticResource TextDark}"
+                                   HorizontalOptions="Fill"
+                                   FontAttributes="Bold"
+                                   Text="{Binding SUB_TITLE}"
+                                   Placeholder="Titulo Linha">
+                            </Editor>
+                            <Editor HorizontalOptions="Fill"
+                                   Grid.Row="1" 
+                                   TextColor="{StaticResource TextDark}"
+                                   Text="{Binding TEXT}"
+                                   Placeholder="Texto">
+                            </Editor>
+                            <Editor HorizontalOptions="Fill"
+                                   Grid.Row="2" 
+                                   TextColor="{StaticResource TextDark}"
+                                   FontAttributes="Italic"
+                                   Text="{Binding REFERENCIA}"
+                                   Placeholder="Detalhe Linha">
+                            </Editor>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

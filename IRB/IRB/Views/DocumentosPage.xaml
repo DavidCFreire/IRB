@@ -7,7 +7,9 @@
              xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
              x:Class="IRB.Views.DocumentosPage"
-             x:Name="myDocumentosPage">
+             x:Name="myDocumentosPage"
+             Title="{Binding TIPO}"
+             Shell.TabBarIsVisible="False">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Opçoes de Texto" Command="{Binding TextOptionsCommand}">
             <ToolbarItem.IconImageSource>
@@ -23,38 +25,6 @@
             <utils:TextNullToBool x:Key="textNullToBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Shell.TitleView>
-        <Grid BackgroundColor="{StaticResource NavigationPrimary}"
-              VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Label Text="{Binding TIPO}"
-                   TextColor="{StaticResource TextLight}"
-                   Grid.Column="0" 
-                   FontSize="Medium"
-                   VerticalOptions="CenterAndExpand"
-                   FontAttributes="Bold">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="documentos_lista"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Image Grid.Column="1"
-                   Margin="0,8,0,0"
-                   VerticalOptions="Center">
-                <Image.Source>
-                    <FontImageSource
-                        FontFamily="{StaticResource FontAwesomeSolid}"
-                        Glyph="{x:Static fontawesome:FontAwesomeIcons.AngleDown}"
-                        Color="White"/>
-                </Image.Source>
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="documentos_lista"/>
-                </Image.GestureRecognizers>
-            </Image>
-        </Grid>
-    </Shell.TitleView>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -80,7 +50,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0"
+                        <!--<Image Grid.Row="0"
                            HorizontalOptions="Center">
                             <Image.Source>
                                 <FontImageSource
@@ -89,8 +59,12 @@
                                 Glyph="{x:Static fontawesome:FontAwesomeIcons.Sync}"
                                 Color="{StaticResource TextSecondaryDark}"/>
                             </Image.Source>
-                        </Image>
+                        </Image>-->
+                        <ActivityIndicator Grid.Row="0"
+                                           IsVisible="{Binding Retornando}"
+                                           IsRunning="{Binding IsBusy}"/>
                         <Label Grid.Row="1" 
+                               IsVisible="{Binding Retornando}"
                            HorizontalOptions="Center"
                            Text="Continuando de onde parou..."
                            FontSize="Subtitle"

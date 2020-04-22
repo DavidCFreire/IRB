@@ -40,6 +40,9 @@ namespace PadariaMarquesa.MobileAppService
             services.AddDbContext<DocumentosDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IDocumentoRepository, DocumentoRepository>();
+            services.AddDbContext<UsuarioDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             //services.AddTransient<IProdutosRepository, ProdutosRepository>();
             //services.AddTransient<IPedidoRepository, PedidosRepository>();
             //services.AddTransient<IPedidoItemRepository, PedidoItensRepository>();

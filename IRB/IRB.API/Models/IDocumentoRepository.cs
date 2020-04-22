@@ -12,6 +12,7 @@ namespace IRB.API.Models
         void Update(Documento item);
         void Remove(int pk);
         Documento Get(int pk);
+        IEnumerable<Documento> GetByVersion(int version);
         IEnumerable<Documento> GetAll();
     }
 }
