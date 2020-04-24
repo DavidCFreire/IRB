@@ -105,60 +105,93 @@ namespace IRB.ViewModels
             if(_listAllDocumentos != null)
             {
                 ListCapitulos.Clear();
-                List<DocumentoListCellGrouped> listCapitulos = new List<DocumentoListCellGrouped>();
+                //List<DocumentoListCellGrouped> listCapitulos = new List<DocumentoListCellGrouped>();
                 List<DocumentoListCellModel> listCapitulosNonGrouped = new List<DocumentoListCellModel>();
-                foreach (var g in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO).OrderBy(x => x.NUMERO))
+                List<DocumentoListCellModel> list = new List<DocumentoListCellModel>();
+                IEnumerable<Documento> listFiltered;
+                if (string.IsNullOrEmpty(_parteFiltro))
+                    listFiltered = _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO);
+                else
+                    listFiltered = _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO && x.PARTE.Contains(_parteFiltro));
+
+                foreach (var i in listFiltered)
                 {
-                    var exist = listCapitulos.Where(x => x.PARTE == g.PARTE).FirstOrDefault();
-                    if (exist == null)
+                    DocumentoListCellModel item = new DocumentoListCellModel()
                     {
-                        List<DocumentoListCellModel> list = new List<DocumentoListCellModel>();
-                        foreach (var i in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO && x.PARTE == g.PARTE).OrderBy(x => x.NUMERO))
-                        {
-                            DocumentoListCellModel item = new DocumentoListCellModel()
-                            {
-                                PK = i.PK,
-                                PARTE = i.PARTE,
-                                NUMERO = i.NUMERO,
-                                REFERENCIA = i.REFERENCIA,
-                                SUB_TITLE = i.SUB_TITLE,
-                                TEXT = i.TEXT,
-                                TIPO = i.TIPO,
-                                TITLE = i.TITLE,
-                                ATTRIBUTES = FontAttributes.None,
-                                LINE_HEIGHT = LINE_HEIGHT,
-                                REFERENCIA_SIZE = REFERENCIA_SIZE,
-                                SUB_TITLE_SIZE = SUB_TITLE_SIZE,
-                                TEXT_SIZE = TEXT_SIZE,
-                                ALIGNMENT = ALIGNMENT
-                            };
-                            var exist2 = list.Where(x => x.TITLE == item.TITLE).FirstOrDefault();
-                            if (exist2 == null)
-                            {
-                                list.Add(item);
-                                listCapitulosNonGrouped.Add(item);
-                            }
-                        }
-                        DocumentoListCellGrouped dg = new DocumentoListCellGrouped(g.PARTE, list);
-                        listCapitulos.Add(dg);
+                        PK = i.PK,
+                        PARTE = i.PARTE,
+                        NUMERO = i.NUMERO,
+                        REFERENCIA = i.REFERENCIA,
+                        SUB_TITLE = i.SUB_TITLE,
+                        TEXT = i.TEXT,
+                        TIPO = i.TIPO,
+                        TITLE = i.TITLE,
+                        ATTRIBUTES = FontAttributes.None,
+                        LINE_HEIGHT = LINE_HEIGHT,
+                        REFERENCIA_SIZE = REFERENCIA_SIZE,
+                        SUB_TITLE_SIZE = SUB_TITLE_SIZE,
+                        TEXT_SIZE = TEXT_SIZE,
+                        ALIGNMENT = ALIGNMENT
+                    };
+                    var exist2 = list.Where(x => x.TITLE == item.TITLE).FirstOrDefault();
+                    if (exist2 == null)
+                    {
+                        list.Add(item);
+                        listCapitulosNonGrouped.Add(item);
                     }
                 }
-                ListCapitulos = new ObservableCollection<DocumentoListCellGrouped>(listCapitulos);
+                //foreach (var g in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO))
+                //{
+                //    var exist = listCapitulos.Where(x => x.PARTE == g.PARTE).FirstOrDefault();
+                //    if (exist == null)
+                //    {
+                //        List<DocumentoListCellModel> list = new List<DocumentoListCellModel>();
+                //        foreach (var i in _listAllDocumentos.Where(x => x.TIPO == _livroSelected.TIPO && x.PARTE == g.PARTE))
+                //        {
+                //            DocumentoListCellModel item = new DocumentoListCellModel()
+                //            {
+                //                PK = i.PK,
+                //                PARTE = i.PARTE,
+                //                NUMERO = i.NUMERO,
+                //                REFERENCIA = i.REFERENCIA,
+                //                SUB_TITLE = i.SUB_TITLE,
+                //                TEXT = i.TEXT,
+                //                TIPO = i.TIPO,
+                //                TITLE = i.TITLE,
+                //                ATTRIBUTES = FontAttributes.None,
+                //                LINE_HEIGHT = LINE_HEIGHT,
+                //                REFERENCIA_SIZE = REFERENCIA_SIZE,
+                //                SUB_TITLE_SIZE = SUB_TITLE_SIZE,
+                //                TEXT_SIZE = TEXT_SIZE,
+                //                ALIGNMENT = ALIGNMENT
+                //            };
+                //            var exist2 = list.Where(x => x.TITLE == item.TITLE).FirstOrDefault();
+                //            if (exist2 == null)
+                //            {
+                //                list.Add(item);
+                //                listCapitulosNonGrouped.Add(item);
+                //            }
+                //        }
+                //        DocumentoListCellGrouped dg = new DocumentoListCellGrouped(g.PARTE, list);
+                //        listCapitulos.Add(dg);
+                //    }
+                //}
+                //ListCapitulos = new ObservableCollection<DocumentoListCellGrouped>(listCapitulos);
                 if (string.IsNullOrEmpty(_parteFiltro))
                 {
-                    ListCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>(listCapitulosNonGrouped);
+                    ListCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>(listCapitulosNonGrouped.OrderBy(x => x.NUMERO));
                 }
                 else
                 {
-                    ListCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>(listCapitulosNonGrouped.Where(x => x.PARTE.Contains(_parteFiltro)));
+                    ListCapitulosNonGrouped = new ObservableCollection<DocumentoListCellModel>(listCapitulosNonGrouped.Where(x => x.PARTE.Contains(_parteFiltro)).OrderBy(x => x.NUMERO));
                 }
-                if (saved != null && saved.PK > 0)
-                {
-                    //DocumentoListCellModel cs = ListCapitulos.Where(x => x.PK == saved.PK).FirstOrDefault();
-                    DocumentoListCellGrouped dlcg = ListCapitulos.Where(x => x.PARTE == saved.PARTE).FirstOrDefault();
-                    DocumentoListCellModel cs = dlcg.Where(x => x.PK == saved.PK).FirstOrDefault();
-                    CapituloSelected = cs;
-                }
+                //if (saved != null && saved.PK > 0)
+                //{
+                //    //DocumentoListCellModel cs = ListCapitulos.Where(x => x.PK == saved.PK).FirstOrDefault();
+                //    DocumentoListCellGrouped dlcg = ListCapitulos.Where(x => x.PARTE == saved.PARTE).FirstOrDefault();
+                //    DocumentoListCellModel cs = dlcg.Where(x => x.PK == saved.PK).FirstOrDefault();
+                //    CapituloSelected = cs;
+                //}
                 if (_linhas)
                     CapituloSelected = ListCapitulosNonGrouped.FirstOrDefault();
                 else

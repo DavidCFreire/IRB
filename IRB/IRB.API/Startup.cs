@@ -50,7 +50,7 @@ namespace PadariaMarquesa.MobileAppService
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "IRB API", Version = "v1" });
             });
         }
 
@@ -71,7 +71,7 @@ namespace PadariaMarquesa.MobileAppService
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "IRB API V1");
             });
 
             //app.Run(async (context) => await Task.Run(() => context.Response.Redirect("/swagger")));

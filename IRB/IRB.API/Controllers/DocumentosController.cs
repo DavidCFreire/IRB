@@ -55,8 +55,11 @@ namespace IRB.API.Controllers
             if (item == null || item.PK != pk)
                 BadRequest();
 
-            var current = repo.Get(item.PK);
-            item.VERSAO = current.VERSAO + 1;
+            var current = repo.GetAll();
+
+            int versao = current.Max(x => x.VERSAO) + 1;
+
+            item.VERSAO = versao;
             repo.Update(item);
             return new NoContentResult();
         }

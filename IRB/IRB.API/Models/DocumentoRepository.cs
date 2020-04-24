@@ -40,6 +40,7 @@ namespace IRB.API.Models
 
         public void Update(Documento item)
         {
+            DetachLocal(_ => _.PK == item.PK);
             _context.DOCUMENTOS.Update(item);
             _context.SaveChanges();
         }
@@ -47,6 +48,15 @@ namespace IRB.API.Models
         public IEnumerable<Documento> GetByVersion(int version)
         {
             return _context.DOCUMENTOS.Where(x => x.VERSAO > version).ToList();
+        }
+
+        public virtual void DetachLocal(Func<Documento, bool> predicate)
+        {
+            var local = _context.Set<Documento>().Local.Where(predicate).FirstOrDefault();
+            if (local != null)
+            {
+                _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+            }
         }
     }
 }

@@ -128,40 +128,44 @@ namespace IRB.ViewModels
             var connectivity = Connectivity.NetworkAccess;
             if(connectivity == NetworkAccess.Internet)
             {
-                if (LoggedUser != null && LoggedUser.PK > 0)
+                try
                 {
-                    var list = DbHelper.GetAllDocumentos();
-                    IEnumerable<Documento> listUpdate = new List<Documento>(list.Where(x => x.VERSAO == 0));
-                    if(listUpdate != null && listUpdate.Count() > 0)
+                    if (LoggedUser != null && LoggedUser.PK > 0)
                     {
-                        foreach (var item in listUpdate)
+                        var list = DbHelper.GetAllDocumentos();
+                        IEnumerable<Documento> listUpdate = new List<Documento>(list.Where(x => x.VERSAO == 0));
+                        if (listUpdate != null && listUpdate.Count() > 0)
                         {
-                            await API.UpdateDocumento(item.PK, item);
+                            foreach (var item in listUpdate)
+                            {
+                                await API.UpdateDocumento(item.PK, item);
+                            }
                         }
                     }
-                }
 
-                if (ModoOffline)
-                {
-                    var list = DbHelper.GetAllDocumentos();
-                    if(list != null && list.Count > 0)
+                    if (ModoOffline)
                     {
-                        int version = list.Max(x => x.VERSAO);
-                        IEnumerable<Documento> documentos = await API.GetDocumentosByVersion(version);
-                        if (documentos != null && documentos.Count() > 0)
+                        var list = DbHelper.GetAllDocumentos();
+                        if (list != null && list.Count > 0)
                         {
-                            if (ModoAutoSync)
+                            int version = list.Max(x => x.VERSAO);
+                            IEnumerable<Documento> documentos = await API.GetDocumentosByVersion(version);
+                            if (documentos != null && documentos.Count() > 0)
                             {
-                                DbHelper.InsertBulkDocumentos(documentos);
-                                DocumentosUpdateAvailable = false;
-                            }
-                            else
-                            {
-                                DocumentosUpdateAvailable = true;
+                                if (ModoAutoSync)
+                                {
+                                    DbHelper.InsertBulkDocumentos(documentos);
+                                    DocumentosUpdateAvailable = false;
+                                }
+                                else
+                                {
+                                    DocumentosUpdateAvailable = true;
+                                }
                             }
                         }
                     }
                 }
+                catch { }
             }
             else
             {

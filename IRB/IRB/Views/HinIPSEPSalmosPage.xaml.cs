@@ -21,7 +21,7 @@ namespace IRB.Views
         }
         protected async override void OnAppearing()
         {
-            await vm.SelecionarDocumento("Hinário IPSEP", "Saltério");
+            await vm.SelecionarDocumento("Livro de Culto", "Saltério");
             base.OnAppearing();
         }
     }

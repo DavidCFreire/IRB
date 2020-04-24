@@ -90,15 +90,22 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.ChalkboardTeacher}"
                 Color="{StaticResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="Parte"
+        <Tab Title="Heidelberg"
              Route="CatHeidelbergITab">
             <Tab.Icon>
                 <FontImageSource Glyph="I"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIPage}"
-                          Route="CatHeidelbergIContent"/>
+                          Route="CatHeidelbergIContent"
+                          Title="Parte I"/>
+            <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIIPage}"
+                          Route="CatHeidelbergIIContent"
+                          Title="Parte II"/>
+            <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIIIPage}"
+                          Route="CatHeidelbergIIIContent"
+                          Title="Parte III"/>
         </Tab>
-        <Tab Title="Parte"
+        <!--<Tab Title="Parte"
              Route="CatHeidelbergIITab">
             <Tab.Icon>
                 <FontImageSource Glyph="II"/>
@@ -113,7 +120,7 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIIIPage}"
                           Route="CatHeidelbergIIIContent"/>
-        </Tab>
+        </Tab>-->
 
     </FlyoutItem>
     <FlyoutItem Title="Cânones de Dort" Route="CanDortFly">
@@ -164,7 +171,7 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.RecordVinyl}"
                 Color="{StaticResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="H. Maceió"
+        <Tab Title="Prov. Maceió"
              Route="HinarioMaceioTab">
             <Tab.Icon>
                 <FontImageSource
@@ -178,7 +185,7 @@
                           ContentTemplate="{DataTemplate local:HinMaceioHinosPage}"
                           Route="HinMaceioHinosContent"/>
         </Tab>
-        <Tab Title="H. IPSEP"
+        <Tab Title="Livro de Culto"
              Route="HinarioIPSEPTab">
             <Tab.Icon>
                 <FontImageSource

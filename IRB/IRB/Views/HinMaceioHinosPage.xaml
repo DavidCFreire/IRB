@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="IRB.Views.HinMaceioHinosPage"
              Routing.Route="HinMaceioHinosPage"
-             Title="{Binding TIPO}">
+             Title="Hinários">
     <ContentPage.Resources>
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
