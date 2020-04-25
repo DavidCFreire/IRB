@@ -4,6 +4,14 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:fontawesome="clr-namespace:FontAwesome"
+       Shell.FlyoutBackgroundColor="{DynamicResource Divider}"
+       Shell.BackgroundColor="{DynamicResource PrimaryLight}"
+       Shell.TabBarForegroundColor="{DynamicResource TextDark}"
+       Shell.TitleColor="{DynamicResource White}"
+       Shell.TabBarUnselectedColor="#50FFFFFF"
+       Shell.DisabledColor="#B4FFFFFF"
+       Shell.UnselectedColor="#50FFFFFF"
+       FlyoutHeaderBehavior="CollapseOnScroll"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:IRB.Views"
        Title="IRB"
@@ -12,30 +20,18 @@
     <!-- 
         Styles and Resources 
     -->
-    <Shell.Resources>
+    <!--<Shell.Resources>
         <ResourceDictionary>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Accent}" />
-                <Setter Property="Shell.ForegroundColor" Value="{StaticResource TextLight}" />
-                <Setter Property="Shell.TitleColor" Value="{StaticResource TextLight}" />
-                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Accent}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TextLight}"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource TextLight}"/>
-            </Style>
-            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="TabBar" BasedOn="{DynamicResource BaseStyle}" />
         </ResourceDictionary>
-    </Shell.Resources>
-
+    </Shell.Resources>-->
     <!-- Your Pages -->
     <FlyoutItem Route="InicioFly" Title="Inicio">
         <FlyoutItem.Icon>
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Home}"
-                Color="{StaticResource TextDark}"/>
+                    Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Inicio"
              Route="InicioTab">
@@ -61,7 +57,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Search}"
-                Color="{StaticResource TextDark}"/>
+                Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Pesquisa"
              Route="PesquisaTab">
@@ -74,7 +70,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeRegular}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Bookmark}"
-                Color="{StaticResource TextDark}" />
+                Color="{DynamicResource TextDark}" />
         </FlyoutItem.Icon>
         <Tab Title="Ler"
              Route="ConfBelgaTab">
@@ -88,7 +84,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.ChalkboardTeacher}"
-                Color="{StaticResource TextDark}"/>
+                Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Heidelberg"
              Route="CatHeidelbergITab">
@@ -128,7 +124,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Gavel}"
-                Color="{StaticResource TextDark}"/>
+                Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Capítulo"
              Route="CanDortITab">
@@ -169,7 +165,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.RecordVinyl}"
-                Color="{StaticResource TextDark}"/>
+                Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Prov. Maceió"
              Route="HinarioMaceioTab">
@@ -206,7 +202,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Cross}"
-                Color="{StaticResource TextDark}"/>
+                Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Apostólico"
              Route="CredoAposTab">
@@ -239,7 +235,7 @@
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.PlaceOfWorship}"
-                Color="{StaticResource TextDark}"/>
+                Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Capítulo"
              Route="RegimentoITab">
@@ -289,41 +285,62 @@
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.EllipsisH}"
-                             Color="{StaticResource TextDark}"/>
+                             Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Mais"
              Route="MaisTab">
-            <ShellContent ContentTemplate="{DataTemplate local:PerfilPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:PerfilPage}" Route="MaisContent" />
         </Tab>
     </FlyoutItem>
-    <!-- Optional Templates 
+     <!--Optional Templates 
     // These may be provided inline as below or as separate classes.
 
-    // This header appears at the top of the Flyout.
+    // This header appears at the top of the Flyout.-->
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid>ContentHere</Grid>
+            <Grid BackgroundColor="Black"
+              HeightRequest="200">
+                <Image Aspect="AspectFill"
+                   Source="chi_ro.jpg"
+                   Opacity="0.3" />
+                <Label Text="IRB Docs"
+                       FontSize="Medium"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <!--// ItemTemplate is for ShellItems as displayed in a Flyout-->
     <Shell.ItemTemplate>
         <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
+            <Grid Style="{StaticResource FloutItemStyle}" Padding="0,10,6,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Icon}"
+                       Margin="16,6"
+                       HeightRequest="20" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       VerticalTextAlignment="Center" >
+                </Label>
+            </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
 
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <!--// MenuItemTemplate is for MenuItems as displayed in a Flyout
     <Shell.MenuItemTemplate>
         <DataTemplate>
             <ContentView>
                 Bindable Properties: Text, Icon
             </ContentView>
         </DataTemplate>
-    </Shell.MenuItemTemplate>
+    </Shell.MenuItemTemplate>-->
 
-    -->
+    
 
 </Shell>

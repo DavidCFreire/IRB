@@ -8,23 +8,58 @@
              mc:Ignorable="d"
              x:Class="IRB.App">
     <Application.Resources>
+        <ResourceDictionary Source="Themes/BlueLightTheme.xaml"/>
+        
         <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
         <utils:SelectedToFontAttributeConverter x:Key="cnvInvertFontAttribute"/>
 
-        <Color x:Key="NavigationPrimary">#2196F3</Color>
+        <!--<Color x:Key="NavigationPrimary">#2196F3</Color>
         <Color x:Key="PrimaryDark">#1976D2</Color>
         <Color x:Key="PrimaryLight">#2196F3</Color>
         <Color x:Key="TextLight">#FFFFFF</Color>
-        <Color x:Key="Accent">#1565C0</Color>
+        <Color x:Key="Accent">#1976D2</Color>
         <Color x:Key="TextDark">#212121</Color>
         <Color x:Key="TextSecondaryDark">#757575</Color>
-        <Color x:Key="Divider">#BDBDBD</Color>
-
+        <Color x:Key="Divider">#F2F2F2</Color>
+        <Color x:Key="Background">#FFFFFF</Color>
 
         <Color x:Key="White">#FFFFFF</Color>
         <Color x:Key="Black">#000000</Color>
         <Color x:Key="FontBlack">#474747</Color>
-        <Color x:Key="SeparatorColor">LightGray</Color>
+        
+        <Color x:Key="SeparatorColor">LightGray</Color>-->
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+        </Style>
+        <Style TargetType="Switch">
+            <Setter Property="ThumbColor" Value="{DynamicResource Accent}" />
+            <Setter Property="OnColor" Value="{DynamicResource NavigationPrimary}" />
+        </Style>
+        <Style TargetType="SearchBar">
+            <Setter Property="TextColor" Value="{DynamicResource TextDark}" />
+            <Setter Property="PlaceholderColor" Value="{DynamicResource TextDark}" />
+        </Style>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{DynamicResource Divider}" />
+        </Style>
+        <Style x:Key="corFundoStyle" TargetType="VisualElement">
+            <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
+        </Style>
+        <Style x:Key="FloutItemStyle" TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{DynamicResource Accent}"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
 
         <OnPlatform x:TypeArguments="x:String" 
                 x:Key="FontAwesomeBrands">
@@ -55,5 +90,29 @@
             <On Platform="UWP" 
           Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />
         </OnPlatform>
+        <!--<Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Divider}" />
+            <Setter Property="Shell.FlyoutBackgroundColor" Value="{DynamicResource Divider}" />
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource TextLight}" />
+            <Setter Property="Shell.TitleColor" Value="{DynamicResource TextLight}" />
+            <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource Accent}" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextLight}"/>
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource TextLight}"/>
+        </Style>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.BackgroundColor" Value="{DynamicResource Divider}" />
+            <Setter Property="Shell.FlyoutBackgroundColor" Value="{DynamicResource Divider}" />
+            <Setter Property="Shell.ForegroundColor" Value="{DynamicResource TextLight}" />
+            <Setter Property="Shell.TitleColor" Value="{DynamicResource TextLight}" />
+            <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{DynamicResource Accent}" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource TextLight}"/>
+            <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+            <Setter Property="Shell.TabBarTitleColor" Value="{DynamicResource TextLight}"/>
+        </Style>-->
     </Application.Resources>
 </Application>

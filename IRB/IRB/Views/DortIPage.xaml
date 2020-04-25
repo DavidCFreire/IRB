@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.DortIPage"
              Routing.Route="DortIPage"
              Title="{Binding TIPO}">

@@ -14,5 +14,7 @@ namespace IRB.Utils
         public static string ModoOffline = "ModoOffline";
         public static string ModoAutoSync = "ModoAutoSync";
         public static string DocumentosUpdateAvailable = "DocumentosUpdateAvailable";
+        public static string DarkMode = "DarkMode";
+        public static string ThemeSelected = "ThemeSelected";
     }
 }

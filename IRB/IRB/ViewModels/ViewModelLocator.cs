@@ -17,6 +17,17 @@ namespace IRB.ViewModels
                 return _registrar;
             }
         }
+        private TemaViewModel _tema;
+        public TemaViewModel Tema
+        {
+            get
+            {
+                if (_tema == null)
+                    _tema = new TemaViewModel();
+
+                return _tema;
+            }
+        }
         private InicioViewModel _inicio;
         public InicioViewModel Inicio
         {

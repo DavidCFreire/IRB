@@ -8,6 +8,10 @@ using IRB.ViewModels;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
+using IRB.Utils;
+using Newtonsoft.Json;
+using IRB.Models;
 
 namespace IRB
 {
@@ -21,10 +25,70 @@ namespace IRB
         public App()
         {
             InitializeComponent();
+            CheckTheme();
             DependencyService.Register<INavigationService, NavigationService>();
             DependencyService.Register<IMessageService, MessageService>();
 
             MainPage = new AppShell();
+        }
+        static bool DarkMode
+        {
+            get
+            {
+                return Preferences.Get(Settings.DarkMode, false);
+            }
+        }
+
+        public static void CheckTheme()
+        {
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+
+                string defaultJson = JsonConvert.SerializeObject(new ThemeModel() { Name = "Azul", Color = "#1976D2" });
+                var savedJson = Preferences.Get(Settings.ThemeSelected, defaultJson);
+                ThemeModel _selectedTheme = JsonConvert.DeserializeObject<ThemeModel>(savedJson);
+                string ThemeName = _selectedTheme.Name;
+                if (DarkMode)
+                {
+                    DependencyService.Get<IStatusBarStyleManager>().SetStatuBarBackground("#000000");
+                    switch (ThemeName)
+                    {
+                        case "Azul":
+                            mergedDictionaries.Add(new BlueDarkTheme());
+                            break;
+                        case "Vermelho":
+                            mergedDictionaries.Add(new VermelhoDarkTheme());
+                            break;
+                        case "Marron":
+                            mergedDictionaries.Add(new MarronDarkTheme());
+                            break;
+                        default:
+                            mergedDictionaries.Add(new BlueDarkTheme());
+                            break;
+                    }
+                }
+                else
+                {
+                    DependencyService.Get<IStatusBarStyleManager>().SetStatuBarBackground(_selectedTheme.Color);
+                    switch (ThemeName)
+                    {
+                        case "Azul":
+                            mergedDictionaries.Add(new BlueLightTheme());
+                            break;
+                        case "Vermelho":
+                            mergedDictionaries.Add(new VermelhoLightTheme());
+                            break;
+                        case "Marron":
+                            mergedDictionaries.Add(new MarronLightTheme());
+                            break;
+                        default:
+                            mergedDictionaries.Add(new BlueLightTheme());
+                            break;
+                    }
+                }
+            }
         }
 
         protected override void OnStart()

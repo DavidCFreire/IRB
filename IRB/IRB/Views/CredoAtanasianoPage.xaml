@@ -6,6 +6,7 @@
              xmlns:fontawesome="clr-namespace:FontAwesome"
              xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
+             Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.CredoAtanasianoPage"
              Title="{Binding TIPO}">
     <ContentPage.ToolbarItems>
@@ -105,7 +106,7 @@
             </CollectionView>
             <Grid x:Name="TextOptionsGrid" 
                   Grid.Row="1"
-                  BackgroundColor="WhiteSmoke"
+                  BackgroundColor="{DynamicResource Divider}"
                   Padding="16,10"
                   VerticalOptions="End"
                   PropertyChanged="TextOptionsGrid_PropertyChanged"

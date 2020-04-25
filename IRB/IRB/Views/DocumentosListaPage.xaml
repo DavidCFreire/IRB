@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:IRB.ViewModels"
              mc:Ignorable="d"
+             Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.DocumentosListaPage"
              Shell.TabBarIsVisible="False"
              Title="Livros"

@@ -73,7 +73,7 @@ namespace IRB.Views
         }
         private void AnimateIn()
         {
-            TextOptionsGrid.TranslateTo(0, 2, 1200, Easing.CubicOut);
+            TextOptionsGrid.TranslateTo(0, 10, 1200, Easing.CubicOut);
             TextOptionsGrid.FadeTo(1, 250, Easing.SinInOut);
         }
 

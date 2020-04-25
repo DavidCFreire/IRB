@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:IRB.ViewModels"
              xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
+             Style="{DynamicResource corFundoStyle}"
              Shell.TabBarIsVisible="False"
              x:Class="IRB.Views.CapitulosListaPage"
              Routing.Route="ListaCapitulos"

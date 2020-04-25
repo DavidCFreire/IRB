@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fontawesome="clr-namespace:FontAwesome"
+             Style="{DynamicResource corFundoStyle}"
              mc:Ignorable="d"
              x:Class="IRB.Views.PerfilPage"
              Title="Mais">
@@ -22,7 +23,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeRegular}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.UserCircle}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid Grid.Column="1"
@@ -34,11 +35,10 @@
                                 </Grid.RowDefinitions>
                                 <Label FontAttributes="Bold"
                                    Text="{Binding Usuario}"
-                                   TextColor="{StaticResource TextDark}"
                                    FontSize="Large"/>
                                 <Label Grid.Row="1"
                                        Text="{Binding Email}"
-                                       TextColor="{StaticResource Accent}"
+                                       TextColor="{DynamicResource Accent}"
                                        FontSize="Micro"/>
                             </Grid>
                             <Grid.GestureRecognizers>
@@ -57,7 +57,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeBrands}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Diaspora}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -66,7 +66,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Alterar Senha"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>
@@ -86,7 +85,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.SignOutAlt}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -95,7 +94,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Sair"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>
@@ -105,7 +103,17 @@
                         </Grid>
                     </ViewCell>
                 </TableSection>
-                <TableSection Title="Geral">
+                <TableSection>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Geral" TextColor="{DynamicResource Accent}" Margin="18,10"/>
+                            <BoxView HeightRequest="1" Grid.Row="1" BackgroundColor="{DynamicResource Accent}" HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                    </ViewCell>
                     <ViewCell>
                         <Grid Padding="16,16,0,16">
                             <Grid.ColumnDefinitions>
@@ -117,7 +125,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Wifi}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -131,7 +139,6 @@
                                 </Grid.ColumnDefinitions>
                                 <Label FontAttributes="None"
                                    Text="Modo Offline"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                                 <ActivityIndicator Grid.Column="1"
@@ -153,7 +160,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Sync}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -167,18 +174,17 @@
                                 </Grid.ColumnDefinitions>
                                 <Label FontAttributes="None"
                                    Text="Atualizar Automaticamente"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                                 <Button HeightRequest="16"
                                         WidthRequest="40"
                                         CornerRadius="20"
                                         Margin="-10"
-                                        BackgroundColor="White"
+                                        BackgroundColor="{DynamicResource Background}"
                                         Grid.Column="1"
                                         FontFamily="{StaticResource FontAwesomeRegular}"
                                         Text="{x:Static fontawesome:FontAwesomeIcons.QuestionCircle}"
-                                        TextColor="{StaticResource TextDark}"
+                                        TextColor="{DynamicResource TextDark}"
                                         Command="{Binding MessageCommand}"
                                         CommandParameter="Essa função habilita a verificação de atualizações nos documentos baixados.&#10;&#10;Sempre que houver uma atualização o app baixará automaticamente, caso esta opção esteja ativa.">
                                 </Button>
@@ -187,10 +193,57 @@
                             </Grid>
                         </Grid>
                     </ViewCell>
+                    <ViewCell>
+                        <Grid Padding="16,16,0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image HeightRequest="16">
+                                <Image.Source>
+                                    <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Palette}"
+                                        Color="{DynamicResource TextDark}"/>
+                                </Image.Source>
+                            </Image>
+                            <Grid VerticalOptions="Center"
+                                  Grid.Column="1"
+                                  Padding="16,0"
+                                  RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label FontAttributes="None"
+                                   Text="Tema"
+                                   VerticalOptions="Center"
+                                   FontSize="Default"/>
+                                <!--<Button HeightRequest="16"
+                                        WidthRequest="40"
+                                        CornerRadius="20"
+                                        Margin="-10"
+                                        BackgroundColor="{DynamicResource Background}"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource FontAwesomeRegular}"
+                                        Text="{x:Static fontawesome:FontAwesomeIcons.QuestionCircle}"
+                                        TextColor="{DynamicResource TextDark}"
+                                        Command="{Binding MessageCommand}"
+                                        CommandParameter="Essa função habilita a verificação de atualizações nos documentos baixados.&#10;&#10;Sempre que houver uma atualização o app baixará automaticamente, caso esta opção esteja ativa.">
+                                </Button>-->
+                                <!--<Switch Grid.Column="2"
+                                        IsToggled="{Binding ModoAutoSync}"/>-->
+                            </Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToCommand}" CommandParameter="tema"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </ViewCell>
                 </TableSection>
                 <!--<TableSection Title="Tema">
                     <ViewCell>
-                        <Grid Padding="16">
+                        <Grid Padding="16,16,0,16">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -200,18 +253,36 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Adjust}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
                                   Grid.Column="1"
                                   Padding="16,0"
                                   RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
                                 <Label FontAttributes="None"
-                                   Text="Modo"
-                                   TextColor="{StaticResource TextDark}"
+                                   Text="Dark Mode"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
+                                <Button HeightRequest="16"
+                                        WidthRequest="40"
+                                        CornerRadius="20"
+                                        Margin="-10"
+                                        BackgroundColor="{DynamicResource Background}"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource FontAwesomeRegular}"
+                                        Text="{x:Static fontawesome:FontAwesomeIcons.QuestionCircle}"
+                                        TextColor="{DynamicResource TextDark}"
+                                        Command="{Binding MessageCommand}"
+                                        CommandParameter="Essa função habilita a verificação de atualizações nos documentos baixados.&#10;&#10;Sempre que houver uma atualização o app baixará automaticamente, caso esta opção esteja ativa.">
+                                </Button>
+                                <Switch Grid.Column="2"
+                                        IsToggled="{Binding DarkMode}"/>
                             </Grid>
                         </Grid>
                     </ViewCell>
@@ -226,7 +297,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Palette}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -235,7 +306,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Cor"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>
@@ -255,7 +325,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.ShareAlt}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -264,7 +334,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Compartilhar o IRB Docs"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>
@@ -281,7 +350,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Star}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -290,7 +359,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Avaliar o IRB Docs"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>
@@ -307,7 +375,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.Bug}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -316,7 +384,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Relatar Problema/Erro"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>
@@ -333,7 +400,7 @@
                                     <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{x:Static fontawesome:FontAwesomeIcons.InfoCircle}"
-                                        Color="{StaticResource TextDark}"/>
+                                        Color="{DynamicResource TextDark}"/>
                                 </Image.Source>
                             </Image>
                             <Grid VerticalOptions="Center"
@@ -342,7 +409,6 @@
                                   RowSpacing="0">
                                 <Label FontAttributes="None"
                                    Text="Sobre o App"
-                                   TextColor="{StaticResource TextDark}"
                                    VerticalOptions="Center"
                                    FontSize="Default"/>
                             </Grid>

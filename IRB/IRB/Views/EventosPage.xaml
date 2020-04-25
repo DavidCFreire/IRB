@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fontawesome="clr-namespace:FontAwesome"
              mc:Ignorable="d"
+             Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.EventosPage"
              Title="IRB Docs">
     <ContentPage.Content>

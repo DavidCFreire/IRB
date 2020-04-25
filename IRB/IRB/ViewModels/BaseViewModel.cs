@@ -222,6 +222,7 @@ namespace IRB.ViewModels
             routes.Add("capitulos_lista", typeof(CapitulosListaPage));
             routes.Add("entrar", typeof(EntrarPage));
             routes.Add("registrar", typeof(RegistrarPage));
+            routes.Add("tema", typeof(TemaPage));
 
             foreach (var item in routes)
             {
