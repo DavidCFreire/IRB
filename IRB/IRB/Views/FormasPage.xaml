@@ -6,9 +6,9 @@
              xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
              Style="{DynamicResource corFundoStyle}"
-             x:Class="IRB.Views.RegimentoIIIPage"
-             Routing.Route="RegimentoIIIPage"
-             Title="{Binding TIPO}">
+             x:Class="IRB.Views.FormasPage"
+             Routing.Route="FormasPage"
+             Title="Formas Litúrgicas">
     <ContentPage.Resources>
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">

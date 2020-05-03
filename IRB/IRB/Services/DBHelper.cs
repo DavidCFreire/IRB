@@ -18,9 +18,11 @@ namespace IRB.Services
             //_dataBase = new LiteDBHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "XamarinLiteDB.db"));
             using (_dataBase)
             {
+                //_dataBase.DropCollection("Documentos");
                 Documentos = _dataBase.GetCollection<Documento>("Documentos");
             }
             var mapper = BsonMapper.Global;
+            mapper.EmptyStringToNull = false;
             mapper.Entity<Documento>().Id(x => x.PK);
             //mapper.Entity & lt; Todo & gt; ()
             //          .Id(x = &gt; x.ID);

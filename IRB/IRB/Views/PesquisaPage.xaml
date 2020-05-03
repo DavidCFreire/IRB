@@ -7,30 +7,112 @@
              Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.PesquisaPage"
              Title="Pesquisa">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{DynamicResource Accent}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid Padding="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <Frame Grid.Row="0" Padding="0,2,4,16">
-                <Grid>
+            <Frame Grid.Row="0" Padding="0,0,0,0" VerticalOptions="Start">
+                <Grid VerticalOptions="Start">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <SearchBar/>
-                    <CollectionView Grid.Row="1">
-                        <CollectionView.Header>
-                            <Label Text="Categorias"
-                                   FontAttributes="Bold"/>
-                        </CollectionView.Header>
+                    <SearchBar Text="{Binding Pesquisa}" Placeholder="Pesquisa" SearchCommand="{Binding PesquisarCommand}" TextColor="{DynamicResource TextDark}" CancelButtonColor="{DynamicResource TextDark}" PlaceholderColor="{DynamicResource TextLight}" BackgroundColor="{DynamicResource TextLight}"/>
+                    <ScrollView Grid.Row="1" Orientation="Horizontal" VerticalOptions="Start">
+                        <Grid VerticalOptions="Start">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame BorderColor="{DynamicResource TextDark}" Padding="10,5" VerticalOptions="Start">
+                                <Grid VerticalOptions="Start">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Documento"/>
+                                    <Picker Title="Selecionar Documento" ItemDisplayBinding="{Binding TIPO}" ItemsSource="{Binding ListDocumentos}" Margin="-4,10,0,0" SelectedItem="{Binding DocumentoFilter}"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </ScrollView>
+                    <!--<CollectionView Grid.Row="1">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Horizontal"/>
                         </CollectionView.ItemsLayout>
-                    </CollectionView>
+                    </CollectionView>-->
                 </Grid>
             </Frame>
+            <RefreshView Grid.Row="1" IsRefreshing="{Binding IsBusy}">
+                <CollectionView ItemsSource="{Binding ListPesquisa}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding CapituloSelected}"
+                                SelectionChangedCommand="{Binding NavigateToCommand}"
+                                SelectionChangedCommandParameter="documentos">
+                <!--<CollectionView.EmptyView>
+                    <Grid HorizontalOptions="CenterAndExpand">
+                    </Grid>
+                </CollectionView.EmptyView>-->
+                    <CollectionView.Header>
+                        <Grid>
+                            <Label Text="Resultados da Pesquisa"/>
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,5">
+                                <Frame>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label HorizontalOptions="Fill"
+                                               FontAttributes="Bold">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding TIPO}"/>
+                                                    <Span Text=" - "/>
+                                                    <Span Text="{Binding TITLE}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label HorizontalOptions="Fill"
+                                               Grid.Row="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding BEFORE}"/>
+                                                    <Span Text="{Binding PESQUISA}" FontAttributes="Bold"/>
+                                                    <Span Text="{Binding AFTER}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

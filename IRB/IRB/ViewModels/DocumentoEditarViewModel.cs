@@ -96,14 +96,15 @@ namespace IRB.ViewModels
                                 Documento doc = new Documento()
                                 {
                                     PK = item.PK,
-                                    PARTE = PARTE,
-                                    TITLE = TITLE,
+                                    PARTE = PARTE != null? PARTE : "",
+                                    TITLE = TITLE != null? TITLE : "",
                                     VERSAO = 0,
                                     NUMERO = item.NUMERO,
-                                    REFERENCIA = item.REFERENCIA,
-                                    SUB_TITLE = item.SUB_TITLE,
-                                    TEXT = item.TEXT,
-                                    TIPO = item.TIPO
+                                    REFERENCIA = item.REFERENCIA != null ? item.REFERENCIA : "",
+                                    SUB_TITLE = item.SUB_TITLE != null ? item.SUB_TITLE : "",
+                                    TEXT = item.TEXT != null ? item.TEXT : "",
+                                    TIPO = item.TIPO != null ? item.TIPO : "",
+                                    TITLE_NUMERO = item.TITLE_NUMERO != null ? item.TITLE_NUMERO : ""
                                 };
                                 DbHelper.UpsertDocumento(doc);
                             }

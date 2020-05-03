@@ -88,9 +88,6 @@
         </FlyoutItem.Icon>
         <Tab Title="Heidelberg"
              Route="CatHeidelbergITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="I"/>
-            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:HeidelbergIPage}"
                           Route="CatHeidelbergIContent"
                           Title="Parte I"/>
@@ -128,37 +125,15 @@
         </FlyoutItem.Icon>
         <Tab Title="Capítulo"
              Route="CanDortITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="I"/>
-            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:DortIPage}"
-                          Route="CanDortIContent"/>
-        </Tab>
-        <Tab Title="Capítulo"
-             Route="CanDortIITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="II"/>
-            </Tab.Icon>
+                          Route="CanDortIContent" Title="Cap. I"/>
             <ShellContent ContentTemplate="{DataTemplate local:DortIIPage}"
-                          Route="CanDortIIContent"/>
-        </Tab>
-        <Tab Title="Capítulo"
-             Route="CanDortIIITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="III-IV"/>
-            </Tab.Icon>
+                          Route="CanDortIIContent" Title="Cap. II"/>
             <ShellContent ContentTemplate="{DataTemplate local:DortIIIPage}"
-                          Route="CanDortIIIContent"/>
-        </Tab>
-        <Tab Title="Capítulo"
-             Route="CanDortVTab">
-            <Tab.Icon>
-                <FontImageSource Glyph="V"/>
-            </Tab.Icon>
+                          Route="CanDortIIIContent" Title="Cap. III - IV"/>
             <ShellContent ContentTemplate="{DataTemplate local:DortVPage}"
-                          Route="CanDortVContent"/>
+                          Route="CanDortVContent" Title="Cap. V"/>
         </Tab>
-
     </FlyoutItem>
     <FlyoutItem Title="Hinário" Route="HinarioFly">
         <FlyoutItem.Icon>
@@ -206,80 +181,47 @@
         </FlyoutItem.Icon>
         <Tab Title="Apostólico"
              Route="CredoAposTab">
-            <Tab.Icon>
-                <FontImageSource Glyph="A"/>
-            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:CredoApostolicoPage}"
-                          Route="CredoAposContent"/>
-        </Tab>
-        <Tab Title="Niceno"
-             Route="CredosNincTab">
-            <Tab.Icon>
-                <FontImageSource Glyph="N"/>
-            </Tab.Icon>
+                          Route="CredoAposContent" Title="Apostólico"/>
             <ShellContent ContentTemplate="{DataTemplate local:CredoNicenoPage}"
-                          Route="CredosNincContent"/>
-        </Tab>
-        <Tab Title="Atanasiano"
-             Route="CredoAtanTab">
-            <Tab.Icon>
-                <FontImageSource Glyph="AT"/>
-            </Tab.Icon>
+                          Route="CredosNincContent" Title="Niceno"/>
             <ShellContent ContentTemplate="{DataTemplate local:CredoAtanasianoPage}"
-                          Route="CredoAtanContent"/>
+                          Route="CredoAtanContent" Title="Atanasiano"/>
         </Tab>
-
     </FlyoutItem>
     <FlyoutItem Title="Regimento" Route="RegimentoFly">
         <FlyoutItem.Icon>
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
-                    Glyph="{x:Static fontawesome:FontAwesomeIcons.PlaceOfWorship}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.Church}"
                 Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
         <Tab Title="Capítulo"
              Route="RegimentoITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="I"/>
-            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoIPage}"
-                          Route="RegimentoIContent"/>
-        </Tab>
-        <Tab Title="Capítulo"
-             Route="RegimentoIITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="II"/>
-            </Tab.Icon>
-
+                          Route="RegimentoIContent" Title="Cap. I"/>
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoIIPage}"
-                          Route="RegimentoIIContent"/>
-        </Tab>
-        <Tab Title="Capítulo"
-             Route="RegimentoIIITab">
-            <Tab.Icon>
-                <FontImageSource Glyph="III"/>
-            </Tab.Icon>
+                          Route="RegimentoIIContent" Title="Cap. II"/>
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoIIIPage}"
-                          Route="RegimentoIIIContent"/>
-        </Tab>
-        <Tab Title="Capítulo"
-             Route="RegimentoIVTab">
-            <Tab.Icon>
-                <FontImageSource Glyph="IV"/>
-            </Tab.Icon>
+                          Route="RegimentoIIIContent" Title="Cap. III"/>
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoIVPage}"
-                          Route="RegimentoIVContent"/>
-        </Tab>
-
-        <Tab Title="Capítulo"
-             Route="RegimentoVTab">
-            <Tab.Icon>
-                <FontImageSource Glyph="V"/>
-            </Tab.Icon>
+                          Route="RegimentoIVContent" Title="Cap. IV"/>
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoVPage}"
-                          Route="RegimentoVContent"/>
+                          Route="RegimentoVContent" Title="Cap. V"/>
         </Tab>
-
+    </FlyoutItem>
+    <FlyoutItem Title="Formas" Route="FormasFly">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                    FontFamily="{StaticResource FontAwesomeRegular}"
+                    Glyph="{x:Static fontawesome:FontAwesomeIcons.FileAlt}"
+                Color="{DynamicResource TextDark}"/>
+        </FlyoutItem.Icon>
+        <Tab Title="Formas"
+             Route="FormasTab">
+            <ShellContent ContentTemplate="{DataTemplate local:FormasPage}"
+                          Route="FormasContent" Title="Formas Litúrgicas"/>
+        </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Mais" Route="MaisFly">
         <FlyoutItem.Icon>

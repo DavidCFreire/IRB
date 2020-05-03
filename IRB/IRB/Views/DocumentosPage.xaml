@@ -33,9 +33,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid HorizontalOptions="EndAndExpand" 
+            <Grid HorizontalOptions="FillAndExpand" 
                   Padding="16,4,16,0">
-                <Label Text="{Binding PARTE}" 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="{Binding TITLE_NUMERO}" 
+                       HorizontalTextAlignment="Center" 
+                       FontSize="{Binding TITLE_SIZE}" 
+                       FontAttributes="Bold"
+                       IsVisible="{Binding TITLE_NUMERO, Converter={StaticResource textNullToBoolConverter}}"
+                       IsEnabled="{Binding TITLE_NUMERO, Converter={StaticResource textNullToBoolConverter}}"/>
+                <Label Text="{Binding PARTE}" Grid.Row="1"
                        HorizontalTextAlignment="End" 
                        TextColor="{StaticResource TextDark}" 
                        FontSize="{Binding PARTE_SIZE}" 

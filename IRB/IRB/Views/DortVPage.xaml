@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utils="clr-namespace:IRB.Utils"
              mc:Ignorable="d"
              Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.DortVPage"
@@ -24,6 +25,9 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
+        <ResourceDictionary>
+            <utils:TextNullToBool x:Key="textNullToBoolConverter" />
+        </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
@@ -44,8 +48,15 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid Padding="32,10,16,10">
-                                    <Label Text="{Binding TITLE}" TextColor="{StaticResource TextDark}" FontSize="Medium" FontAttributes="{Binding ATTRIBUTES}"/>
+                                <Grid Padding="32,10,16,10" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding TITLE_NUMERO}" TextColor="{DynamicResource Accent}" FontSize="Caption" FontAttributes="{Binding ATTRIBUTES}"
+                                        IsVisible="{Binding TITLE_NUMERO, Converter={StaticResource textNullToBoolConverter}}"
+                                        IsEnabled="{Binding TITLE_NUMERO, Converter={StaticResource textNullToBoolConverter}}"/>
+                                    <Label Grid.Row="1" Text="{Binding TITLE}" FontSize="Medium" FontAttributes="{Binding ATTRIBUTES}"/>
                                 </Grid>
                                 <BoxView Grid.Row="1" HeightRequest="1" BackgroundColor="{StaticResource Divider}"/>
                             </Grid>

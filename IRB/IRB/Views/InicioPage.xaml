@@ -9,74 +9,78 @@
              x:Class="IRB.Views.InicioPage"
              Title="IRB Docs">
     <ContentPage.Content>
-        <CollectionView>
-            <CollectionView.EmptyView>
-                <Grid HorizontalOptions="Center" Padding="20">
+        <Grid HorizontalOptions="Center" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="1">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Data, StringFormat='{0:dddd, dd MMMM}'}" TextColor="{DynamicResource TextLight}"/>
+                                <Span Text="{Binding Saudacao, StringFormat='&#10;{0}'}" FontAttributes="Bold" FontSize="Title"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="1" VerticalOptions="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Este app é uma iniciativa particular.&#10;Não tem vinculos oficias as Igrejas Reformadas do Brasil." FontAttributes="Bold" FontSize="Micro"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </ScrollView>
+            <Frame Grid.Row="2"
+                           IsVisible="{Binding ModoOffline}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <ScrollView Grid.Row="1">
-                        <Label HorizontalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="IRB Docs" FontAttributes="Bold"/>
-                                    <Span Text="&#10;Documentos das Igrejas Reformadas do Brasil"/>
-                                    <Span Text="&#10;&#10;Neste app você encontra todos os documentos das Igrejas Reformadas do Brasil"/>
-                                    <Span Text="&#10;• Confissão Belga&#10;• Catecismo de Heidelberg&#10;• Cânones de Dort&#10;• Hinários&#10;• Credos&#10;• Regimento&#10;• Formas"/>
-                                    <Span Text="&#10;&#10;Podem estar faltando algumas informações nos documentos, porém estamos atualizando todos os documentos"/>
-                                    <Span Text="&#10;Em breve teremos mais informações disponiveis no app"/>
-                                    <Span Text="&#10;&#10;Na opção 'Mais' no menu você pode habilitar a função Offline e ter acesso a todos os documentos offline no seu aparelho"/>
-                                    <Span Text="&#10;&#10;App está em desenvolvimento" TextDecorations="Underline" TextColor="{StaticResource Accent}"/>
-                                    <Span Text="&#10;Se encontrar erros e travamentos nos mandem feedback" TextDecorations="Underline" TextColor="{StaticResource Accent}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </ScrollView>
-                    <Frame Grid.Row="2"
-                           IsVisible="{Binding ModoOffline}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
-                                <Image.Source>
-                                    <FontImageSource
+                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+                        <Image.Source>
+                            <FontImageSource
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         Glyph="{Binding SyncImage}"
                                         Color="{Binding SyncColor}"/>
-                                </Image.Source>
-                            </Image>
-                            <Label Grid.Column="1" Grid.Row="0"
+                        </Image.Source>
+                    </Image>
+                    <Label Grid.Column="1" Grid.Row="0"
                                    Text="{Binding SyncMessage}"
                                    VerticalOptions="Center"/>
-                            <Grid Grid.Row="1" Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0"
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0"
                                     Text="Atualizar"
                                     IsVisible="{Binding DocumentosUpdateAvailable}"
                                     IsEnabled="{Binding DocumentosUpdateAvailable}"
                                     Command="{Binding AtualizarCommand}"/>
-                                <ActivityIndicator Grid.Column="1"
+                        <ActivityIndicator Grid.Column="1"
                                                HorizontalOptions="Center"
                                                IsRunning="True"
                                                WidthRequest="30"
                                                IsVisible="{Binding IsBusy}"
                                                IsEnabled="{Binding IsBusy}"/>
-                            </Grid>
-                        </Grid>
-                    </Frame>
+                    </Grid>
                 </Grid>
-            </CollectionView.EmptyView>
-        </CollectionView>
+            </Frame>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

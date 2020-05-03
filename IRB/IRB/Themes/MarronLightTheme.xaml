@@ -5,7 +5,7 @@
     <Color x:Key="NavigationPrimary">#795548</Color>
     <Color x:Key="PrimaryDark">#5D4037</Color>
     <Color x:Key="PrimaryLight">#795548</Color>
-    <Color x:Key="TextLight">#FFFFFF</Color>
+    <Color x:Key="TextLight">#50212121</Color>
     <Color x:Key="Accent">#5D4037</Color>
     <Color x:Key="TextDark">#212121</Color>
     <Color x:Key="TextSecondaryDark">#757575</Color>

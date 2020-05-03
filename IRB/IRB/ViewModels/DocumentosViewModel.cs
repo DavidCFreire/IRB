@@ -3,6 +3,7 @@ using IRB.Models;
 using IRB.Utils;
 using IRB.Views;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -82,7 +83,7 @@ namespace IRB.ViewModels
         }
         DocumentoListCellModel saved;
 
-        private IEnumerable<Documento> _listAllDocumentos;
+        public IEnumerable<Documento> _listAllDocumentos;
 
         #region CAPITULOS
         private ObservableCollection<DocumentoListCellGrouped> _listCapitulos = new ObservableCollection<DocumentoListCellGrouped>();
@@ -162,7 +163,8 @@ namespace IRB.ViewModels
                         REFERENCIA_SIZE = REFERENCIA_SIZE,
                         SUB_TITLE_SIZE = SUB_TITLE_SIZE,
                         TEXT_SIZE = TEXT_SIZE,
-                        ALIGNMENT = ALIGNMENT
+                        ALIGNMENT = ALIGNMENT,
+                        TITLE_NUMERO = g.TITLE_NUMERO
                     };
                     ListAllCapitulosNonGrouped.Add(gi);
                     var exist = listCapitulos.Where(x => x.PARTE == g.PARTE).FirstOrDefault();
@@ -186,7 +188,8 @@ namespace IRB.ViewModels
                                 REFERENCIA_SIZE = REFERENCIA_SIZE,
                                 SUB_TITLE_SIZE = SUB_TITLE_SIZE,
                                 TEXT_SIZE = TEXT_SIZE,
-                                ALIGNMENT = ALIGNMENT
+                                ALIGNMENT = ALIGNMENT,
+                                TITLE_NUMERO = i.TITLE_NUMERO
                             };
                             var exist2 = list.Where(x => x.TITLE == item.TITLE).FirstOrDefault();
                             if (exist2 == null)
@@ -245,6 +248,7 @@ namespace IRB.ViewModels
                     SetProperty(ref _capituloSelected, value);
                     LoadLinhas();
                     PARTE = value.PARTE;
+                    TITLE_NUMERO = value.TITLE_NUMERO;
                     TIPO = value.TIPO;
                     TITLE = value.TITLE;
                     SaveCapitulo(value);
@@ -291,7 +295,8 @@ namespace IRB.ViewModels
                     REFERENCIA_SIZE = REFERENCIA_SIZE,
                     SUB_TITLE_SIZE = SUB_TITLE_SIZE,
                     TEXT_SIZE = TEXT_SIZE,
-                    ALIGNMENT = ALIGNMENT
+                    ALIGNMENT = ALIGNMENT,
+                    TITLE_NUMERO = i.TITLE_NUMERO
                 };
                 listLinhas.Add(item);
             }
@@ -310,13 +315,18 @@ namespace IRB.ViewModels
         //RefreshCommand
         public ICommand RefreshLivrosCommand => new Command(async () => await LoadLivros());
 
+        public async Task LoadAllDocumentos()
+        {
+            if (ModoOffline)
+                _listAllDocumentos = DbHelper.GetAllDocumentos();
+            else
+                _listAllDocumentos = await API.GetAllDocumentos();
+        }
+
         async Task LoadLivros()
         {
             ListDocumentos.Clear();
-            if (ModoOffline)
-                _listAllDocumentos = DbHelper.GetAllDocumentos();
-            else 
-                _listAllDocumentos = await API.GetAllDocumentos();
+            await LoadAllDocumentos();
 
             List<DocumentoListCellModel> listLivros = new List<DocumentoListCellModel>();
             foreach (var item in _listAllDocumentos.OrderBy(x => x.TIPO))
@@ -331,6 +341,7 @@ namespace IRB.ViewModels
                         NUMERO = item.NUMERO,
                         REFERENCIA = item.REFERENCIA,
                         SUB_TITLE = item.SUB_TITLE,
+                        TITLE_NUMERO = item.TITLE_NUMERO,
                         TEXT = item.TEXT,
                         TIPO = item.TIPO,
                         TITLE = item.TITLE,
@@ -423,6 +434,12 @@ namespace IRB.ViewModels
         {
             get => _parteSelected;
             set => SetProperty(ref _parteSelected, value);
+        }
+        private string _titleNumeroSelected;
+        public string TITLE_NUMERO
+        {
+            get => _titleNumeroSelected;
+            set => SetProperty(ref _titleNumeroSelected, value);
         }
         private string _tipoSelected = "";
         public string TIPO

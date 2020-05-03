@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Style="{DynamicResource corFundoStyle}"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             x:Class="IRB.Views.SobrePage" Title="Sobre o APP">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TableView Grid.Row="1" HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <Grid Padding="20,10">
+                                <Label HorizontalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="IRB Docs" FontAttributes="Bold"/>
+                                            <Span Text="&#10;Documentos das Igrejas Reformadas do Brasil"/>
+                                            <Span Text="&#10;&#10;Neste app você encontra todos os documentos das Igrejas Reformadas do Brasil"/>
+                                            <Span Text="&#10;• Confissão Belga&#10;• Catecismo de Heidelberg&#10;• Cânones de Dort&#10;• Hinários&#10;• Credos&#10;• Regimento&#10;• Formas"/>
+                                            <Span Text="&#10;&#10;App está em desenvolvimento" TextDecorations="Underline" TextColor="{StaticResource Accent}"/>
+                                            <Span Text="&#10;Se encontrar erros e travamentos nos mandem feedback" TextDecorations="Underline" TextColor="{StaticResource Accent}"/>
+                                            <Span Text="&#10;&#10;Este app é uma iniciativa particular, não tem vinculos oficias as Igrejas Reformadas do Brasil." FontAttributes="Bold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid Padding="20,10" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.RowSpan="2" Margin="0,0,16,0">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="{StaticResource FontAwesomeSolid}"
+                                            Glyph="{x:Static fontawesome:FontAwesomeIcons.Code}"
+                                            Color="{DynamicResource TextDark}"
+                                            Size="20"/>
+                                    </Image.Source>
+                                </Image>
+                                <Label Text="Desenvolvedor" FontSize="Micro" Grid.Column="1" TextColor="{DynamicResource Accent}"/>
+                                <Label Text="David Freire" Grid.Row="1" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

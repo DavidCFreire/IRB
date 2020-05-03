@@ -223,6 +223,8 @@ namespace IRB.ViewModels
             routes.Add("entrar", typeof(EntrarPage));
             routes.Add("registrar", typeof(RegistrarPage));
             routes.Add("tema", typeof(TemaPage));
+            routes.Add("sobre", typeof(SobrePage));
+            routes.Add("formas", typeof(FormasPage));
 
             foreach (var item in routes)
             {

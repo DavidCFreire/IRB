@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -95,5 +96,14 @@ namespace IRB.Data
             }
         }
 
+        private string _title_numero;
+        public string TITLE_NUMERO
+        {
+            get => _title_numero;
+            set
+            {
+                _title_numero = value;
+            }
+        }
     }
 }
