@@ -24,10 +24,11 @@ namespace IRB
         public static ViewModelLocator vmLocator = new ViewModelLocator();
         public App()
         {
-            InitializeComponent();
-            CheckTheme();
             DependencyService.Register<INavigationService, NavigationService>();
             DependencyService.Register<IMessageService, MessageService>();
+            vmLocator.LoadVM();
+            InitializeComponent();
+            CheckTheme();
 
             MainPage = new AppShell();
         }

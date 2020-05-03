@@ -19,10 +19,10 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
-        {
-            await vm.SelecionarDocumento("Hinário Maceió", "Salmos");
-            base.OnAppearing();
-        }
+        //protected async override void OnAppearing()
+        //{
+        //    await vm.SelecionarDocumento("Hinário Maceió", "Salmos");
+        //    base.OnAppearing();
+        //}
     }
 }

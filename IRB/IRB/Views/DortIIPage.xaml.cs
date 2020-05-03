@@ -19,10 +19,10 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
-        {
-            await vm.SelecionarDocumento("Cânones de Dort", "II Capítulo: A Morte de Cristo e a Redenção do Homem Através Dela");
-            base.OnAppearing();
-        }
+        //protected async override void OnAppearing()
+        //{
+        //    await vm.SelecionarDocumento("Cânones de Dort", "II Capítulo: A Morte de Cristo e a Redenção do Homem Através Dela");
+        //    base.OnAppearing();
+        //}
     }
 }

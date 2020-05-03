@@ -20,9 +20,10 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
-            await vm.SelecionarDocumento("Credos", "Niceno", true);
+            base.OnAppearing();
+            vm.SelecionarDocumento("Credos", "Niceno", true);
             if (vm.LoggedUser != null && vm.LoggedUser.PK > 0 && (vm.LoggedUser.TIPO.ToLower() == "root" || vm.LoggedUser.TIPO.ToLower() == "editor"))
             {
                 if (ToolbarItems.LastOrDefault().Text != "Editar Documento")
@@ -52,7 +53,6 @@ namespace IRB.Views
                     this.ToolbarItems.Remove(lastToolbar);
                 }
             }
-            base.OnAppearing();
         }
         private async void TextOptionsGrid_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {

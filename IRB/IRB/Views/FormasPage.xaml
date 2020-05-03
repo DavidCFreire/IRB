@@ -36,7 +36,7 @@
             </Grid.RowDefinitions>
             <RefreshView IsRefreshing="{Binding IsBusy}"
                          Command="{Binding RefreshCapitulosCommand}">
-                <CollectionView ItemsSource="{Binding ListCapitulosNonGrouped}"
+                <CollectionView ItemsSource="{Binding ListCapitulosFormas}"
                                 SelectionMode="Single"
                                 SelectedItem="{Binding CapituloSelected}"
                                 SelectionChangedCommand="{Binding NavigateToCommand}"

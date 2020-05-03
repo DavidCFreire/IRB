@@ -19,10 +19,10 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
-        {
-            await vm.SelecionarDocumento("Regimento", "II. As Assembléias Eclesiásticas");
-            base.OnAppearing();
-        }
+        //protected async override void OnAppearing()
+        //{
+        //    await vm.SelecionarDocumento("Regimento", "II. As Assembléias Eclesiásticas");
+        //    base.OnAppearing();
+        //}
     }
 }

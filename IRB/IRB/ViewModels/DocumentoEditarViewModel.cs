@@ -112,7 +112,7 @@ namespace IRB.ViewModels
                             {
                                 SyncDocumentos(true);
                                 IsBusy = false;
-                                await App.vmLocator.Documentos.SelecionarDocumento(App.vmLocator.Documentos._pageName, App.vmLocator.Documentos._parteFiltro, App.vmLocator.Documentos._linhas, Capitulo.PK);
+                                App.vmLocator.Documentos.SelecionarDocumento(string.Empty, string.Empty, false, Capitulo.PK);
                             }
                             catch 
                             {

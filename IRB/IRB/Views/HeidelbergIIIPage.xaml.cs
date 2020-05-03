@@ -19,10 +19,10 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
-        {
-            await vm.SelecionarDocumento("Catecismo de Heidelberg", "Parte III - Nossa Gratidão");
-            base.OnAppearing();
-        }
+        //protected async override void OnAppearing()
+        //{
+        //    //await vm.SelecionarDocumento("Catecismo de Heidelberg", "Parte III - Nossa Gratidão");
+        //    base.OnAppearing();
+        //}
     }
 }

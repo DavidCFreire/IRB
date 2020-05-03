@@ -6,6 +6,11 @@ namespace IRB.ViewModels
 {
     public class ViewModelLocator
     {
+        public void LoadVM()
+        {
+            _documentos = new DocumentosViewModel();
+        }
+
         private RegistrarViewModel _registrar;
         public RegistrarViewModel Registrar
         {

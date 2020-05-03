@@ -19,11 +19,11 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
-        {
-            await vm.SelecionarDocumento("Formas Litúrgicas");
-            base.OnAppearing();
-        }
+        //protected async override void OnAppearing()
+        //{
+        //    await vm.SelecionarDocumento("Formas Litúrgicas");
+        //    base.OnAppearing();
+        //}
 
     }
 }

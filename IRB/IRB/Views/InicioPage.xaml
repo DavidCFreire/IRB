@@ -34,7 +34,7 @@
                     <Label Grid.Row="1" VerticalOptions="End">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Este app é uma iniciativa particular.&#10;Não tem vinculos oficias as Igrejas Reformadas do Brasil." FontAttributes="Bold" FontSize="Micro"/>
+                                <Span Text="Este app é uma iniciativa particular.&#10;Não tem vinculos oficiais com as Igrejas Reformadas do Brasil." FontAttributes="Bold" FontSize="Micro"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

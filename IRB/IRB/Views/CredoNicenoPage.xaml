@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.CredoNicenoPage"
-             Title="{Binding TIPO}">
+             Title="Credos">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Opçoes de Texto" Command="{Binding TextOptionsCommand}">
             <ToolbarItem.IconImageSource>

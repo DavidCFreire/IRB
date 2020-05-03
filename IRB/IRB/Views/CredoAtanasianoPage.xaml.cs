@@ -22,7 +22,7 @@ namespace IRB.Views
         }
         protected async override void OnAppearing()
         {
-            await vm.SelecionarDocumento("Credos", "Atanasiano", true);
+            vm.SelecionarDocumento("Credos", "Atanasiano", true);
             if (vm.LoggedUser != null && vm.LoggedUser.PK > 0 && (vm.LoggedUser.TIPO.ToLower() == "root" || vm.LoggedUser.TIPO.ToLower() == "editor"))
             {
                 if (ToolbarItems.LastOrDefault().Text != "Editar Documento")

@@ -28,7 +28,7 @@
                                             <Span Text="&#10;• Confissão Belga&#10;• Catecismo de Heidelberg&#10;• Cânones de Dort&#10;• Hinários&#10;• Credos&#10;• Regimento&#10;• Formas"/>
                                             <Span Text="&#10;&#10;App está em desenvolvimento" TextDecorations="Underline" TextColor="{StaticResource Accent}"/>
                                             <Span Text="&#10;Se encontrar erros e travamentos nos mandem feedback" TextDecorations="Underline" TextColor="{StaticResource Accent}"/>
-                                            <Span Text="&#10;&#10;Este app é uma iniciativa particular, não tem vinculos oficias as Igrejas Reformadas do Brasil." FontAttributes="Bold"/>
+                                            <Span Text="&#10;&#10;Este app é uma iniciativa particular, não tem vinculos oficiais as Igrejas Reformadas do Brasil." FontAttributes="Bold"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

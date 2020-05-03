@@ -242,7 +242,17 @@
                     </ViewCell>
                 </TableSection>
 
-                <TableSection Title="Sobre">
+                <TableSection>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Sobre" TextColor="{DynamicResource Accent}" Margin="18,10"/>
+                            <BoxView HeightRequest="1" Grid.Row="1" BackgroundColor="{DynamicResource Accent}" HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                    </ViewCell>
                     <!--<ViewCell>
                         <Grid Padding="16">
                             <Grid.ColumnDefinitions>

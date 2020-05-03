@@ -17,5 +17,11 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = App.vmLocator.Pesquisa;
         }
+
+        protected async override void OnAppearing()
+        {
+            await App.vmLocator.Pesquisa.LoadLivros();
+            base.OnAppearing();
+        }
     }
 }

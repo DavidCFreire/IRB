@@ -23,7 +23,7 @@ namespace IRB.ViewModels
         {
             get
             {
-                string ret = "Bom dia";
+                string ret = "Boa Noite";
                 if (Data.Hour > 4)
                     ret = "Bom dia";
 

@@ -32,7 +32,7 @@
             </Grid.RowDefinitions>
             <RefreshView IsRefreshing="{Binding IsBusy}"
                          Command="{Binding RefreshCapitulosCommand}">
-                <CollectionView ItemsSource="{Binding ListCapitulosNonGrouped}"
+                <CollectionView ItemsSource="{Binding ListCapitulosHMaceioS}"
                                 SelectionMode="Single"
                                 SelectedItem="{Binding CapituloSelected}"
                                 SelectionChangedCommand="{Binding NavigateToCommand}"

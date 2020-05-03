@@ -50,7 +50,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label Text="Documento"/>
-                                    <Picker Title="Selecionar Documento" ItemDisplayBinding="{Binding TIPO}" ItemsSource="{Binding ListDocumentos}" Margin="-4,10,0,0" SelectedItem="{Binding DocumentoFilter}"/>
+                                    <Picker TextColor="{DynamicResource TextDark}" Title="Selecionar Documento" ItemDisplayBinding="{Binding TIPO}" ItemsSource="{Binding ListDocumentos}" Margin="-4,10,0,0" SelectedItem="{Binding DocumentoFilter}"/>
                                 </Grid>
                             </Frame>
                         </Grid>
@@ -65,7 +65,7 @@
             <RefreshView Grid.Row="1" IsRefreshing="{Binding IsBusy}">
                 <CollectionView ItemsSource="{Binding ListPesquisa}"
                                 SelectionMode="Single"
-                                SelectedItem="{Binding CapituloSelected}"
+                                SelectedItem="{Binding CapituloPesquisaSelected}"
                                 SelectionChangedCommand="{Binding NavigateToCommand}"
                                 SelectionChangedCommandParameter="documentos">
                 <!--<CollectionView.EmptyView>

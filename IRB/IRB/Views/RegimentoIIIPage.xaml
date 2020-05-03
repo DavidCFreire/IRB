@@ -8,7 +8,7 @@
              Style="{DynamicResource corFundoStyle}"
              x:Class="IRB.Views.RegimentoIIIPage"
              Routing.Route="RegimentoIIIPage"
-             Title="{Binding TIPO}">
+             Title="Regimento">
     <ContentPage.Resources>
         <Style TargetType="Grid">
             <Setter Property="VisualStateManager.VisualStateGroups">
@@ -36,7 +36,7 @@
             </Grid.RowDefinitions>
             <RefreshView IsRefreshing="{Binding IsBusy}"
                          Command="{Binding RefreshCapitulosCommand}">
-                <CollectionView ItemsSource="{Binding ListCapitulosNonGrouped}"
+                <CollectionView ItemsSource="{Binding ListCapitulosRegimentoIII}"
                                 SelectionMode="Single"
                                 SelectedItem="{Binding CapituloSelected}"
                                 SelectionChangedCommand="{Binding NavigateToCommand}"

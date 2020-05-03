@@ -19,11 +19,11 @@ namespace IRB.Views
             InitializeComponent();
             BindingContext = vm;
         }
-        protected async override void OnAppearing()
-        {
-            await vm.SelecionarDocumento("Regimento", "III. Os Cultos Públicos E Os Sacramentos");
-            base.OnAppearing();
-        }
+        //protected async override void OnAppearing()
+        //{
+        //    await vm.SelecionarDocumento("Regimento", "III. Os Cultos Públicos E Os Sacramentos");
+        //    base.OnAppearing();
+        //}
 
     }
 }
