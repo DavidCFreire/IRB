@@ -9,12 +9,7 @@
              x:Class="IRB.Views.SobrePage" Title="Sobre o APP">
     <ContentPage.Content>
         <Grid HorizontalOptions="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <TableView Grid.Row="1" HasUnevenRows="True">
+            <TableView HasUnevenRows="True">
                 <TableRoot>
                     <TableSection>
                         <ViewCell>
@@ -55,6 +50,100 @@
                                 </Image>
                                 <Label Text="Desenvolvedor" FontSize="Micro" Grid.Column="1" TextColor="{DynamicResource Accent}"/>
                                 <Label Text="David Freire" Grid.Row="1" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="As Três Formas de Unidade" TextColor="{DynamicResource Accent}" Margin="18,10"/>
+                                <BoxView HeightRequest="1" Grid.Row="1" BackgroundColor="{DynamicResource Accent}" HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid Padding="20,10">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="© 2006 Direitos reservados: CLIRE - Centro de Literatura Reformada." FontAttributes="Italic"/>
+                                            <Span Text="&#10;&#10;As Três Formas de Unidade das Igrejas Reformadas: " FontAttributes="Bold"/>
+                                            <Span Text="A Confissão de Fé Belga, O Catecismo de Heidelberg e Os Cânones de Dort." FontAttributes="Italic"/>
+                                            <Span Text="&#10;&#10;1.ª edição - 2006&#10;2.ª edição - 2009&#10;3.ª edição revisada - 2017"/>
+                                            <Span Text="&#10;&#10;Todos os direitos reservados. É proibida a reprodução deste livro, no todo ou em parte, por quaisquer meios, sem a permissão por escrito do CLIRE - Centro de Literatura Reformada. Exceto citações com indicação da fonte."/>
+                                            <Span Text="&#10;&#10;Conselho editorial: " FontAttributes="Bold"/>
+                                            <Span Text="Ademir Souza, Adriano Gama, Kenneth Wieske e Waldemir Magalhães" FontAttributes="Italic"/>
+                                            <Span Text="&#10;&#10;Editor: " FontAttributes="Bold"/>
+                                            <Span Text="Waldemir Magalhães"/>
+                                            <Span Text="&#10;Tradutor: " FontAttributes="Bold"/>
+                                            <Span Text="Marcos Vasconcelos"/>
+                                            <Span Text="&#10;Revisores: " FontAttributes="Bold"/>
+                                            <Span Text="Adriano Gama, Kenneth Wieske, Waldemir Magalhães e Gerson Júnior"/>
+                                            <Span Text="&#10;Designer: " FontAttributes="Bold"/>
+                                            <Span Text="Heraldo Almeida"/>
+                                            <Span Text="&#10;&#10;Gravura da capa: " FontAttributes="Bold"/>
+                                            <Span Text="Ilustra o Grande Sínodo de Dort - 1618-1619"/>
+                                            <Span Text="&#10;&#10;ISBN: 978-62828-48-5"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Hinário Maceió" TextColor="{DynamicResource Accent}" Margin="18,10"/>
+                                <BoxView HeightRequest="1" Grid.Row="1" BackgroundColor="{DynamicResource Accent}" HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid Padding="20,10">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="ORGANIZADO POR: Igreja Reformada do Brasil em Maceió"/>
+                                            <!--<Span Text="&#10;&#10;APRESENTAÇÃO" FontAttributes="Bold"/>
+                                            <Span Text="&#10;Já há alguns anos, temos sentido a necessecidade de um novo hinário para uso de nossa congregação. No início, a intenção era que este trabalho servisse como proposta para a Confederação das Igrejas Reformadas do Brasil e que ele pudesse ser usado nacionalmente, funcionando como mais um ponto de integração entre as igrejas. Com isto em mente, nos preocupamos em selecionar, de todos os hináris locais já utilizados pelas igrejas reformadas, os hinos que hoje fazem parte deste trabalho."/>
+                                            <Span Text="&#10;Os Salmos também receberam uma atenção especial. Do Saltério de Genebra, alguns que já cantávamos foram revisados e outros que não tínhamos disponíveis em português foram adicionados após terem os seus textos metrificados para a melodia genebrina. Além das versões de Genebra, selecionamos algumas versões que são conhecidas no meio evangélico brasileiros"/>
+                                            <Span Text="&#10;É importante deixar claro, que este hinário tem caracter provisório e local. A urgência em já ter algo em mãos para ser ultilizado nos obrigou a publicá-lo mesmo não estando de todo satisfeitos com o resultado. Muito trabalho ainda deve ser feito, principalmente em relação a metrificação de todos os Salmos para a melodia genebrina e para melodias mais relacionadas com a realidade brasileira e latino-americana. Isto ainda é um grande desafio, não só para nossas igrejas, mas para todas as igrejas cristãs do nosso país. Ainda outras deficiências serão notadas, tanto na quantidade, diversidade e qualidade dos Hinos e Salmos, quanto nas questões relacionadas à gramática, grafia, etc... É muito importante que essas deficiências sejam notadas, anotadas e encaminhadas aos responsáveis, pois assim teremos material para aperfeiçoamento dos próximos trabalhos."/>
+                                            <Span Text="&#10;Para finalizar, esperamos que este hinário, mesmo provisório, seja uma benção para nossa congregação e um instrumento útil para a Glória de Deus."/>-->
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Livro de Culto" TextColor="{DynamicResource Accent}" Margin="18,10"/>
+                                <BoxView HeightRequest="1" Grid.Row="1" BackgroundColor="{DynamicResource Accent}" HorizontalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid Padding="20,10">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="O Saltério Português-Genebrês fora editado com Salmos Português Genebrês retirados a partir das seguintes fontes: "/>
+                                            <Span Text="&#10;&#10;Comissão Brasileira de Salmódia" FontAttributes="Bold"/>
+                                            <Span Text=" (salterio.org) "/>
+                                            <Span Text="– CBS" FontAttributes="Bold"/>
+                                            <Span Text="&#10;Lucas Freire" FontAttributes="Bold"/>
+                                            <Span Text=" (www.salmodia.wordpress.com) "/>
+                                            <Span Text="– LGF" FontAttributes="Bold"/>
+                                            <Span Text="&#10;Proposta de Saltério da Igreja Reformada do Brasil em Macieo – HM" FontAttributes="Bold"/>
+                                            <Span Text="&#10;Compilação:" FontAttributes="Bold"/>
+                                            <Span Text=" Ryan van de Burgt (ryan@rbooks.net)"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </Grid>
                         </ViewCell>
                     </TableSection>

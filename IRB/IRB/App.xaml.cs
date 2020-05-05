@@ -65,6 +65,30 @@ namespace IRB
                         case "Marron":
                             mergedDictionaries.Add(new MarronDarkTheme());
                             break;
+                        case "Roxo":
+                            mergedDictionaries.Add(new RoxoDarkTheme());
+                            break;
+                        case "Azul Escuro":
+                            mergedDictionaries.Add(new AzulEscuroDarkTheme());
+                            break;
+                        case "Verde":
+                            mergedDictionaries.Add(new VerdeDarkTheme());
+                            break;
+                        case "Amarelo":
+                            mergedDictionaries.Add(new AmareloDarkTheme());
+                            break;
+                        case "Laranja":
+                            mergedDictionaries.Add(new LaranjaDarkTheme());
+                            break;
+                        case "Laranja Escuro":
+                            mergedDictionaries.Add(new LaranjaEscuroDarkTheme());
+                            break;
+                        case "Cinza":
+                            mergedDictionaries.Add(new CinzaDarkTheme());
+                            break;
+                        case "Chumbo":
+                            mergedDictionaries.Add(new ChumboDarkTheme());
+                            break;
                         default:
                             mergedDictionaries.Add(new BlueDarkTheme());
                             break;
@@ -83,6 +107,30 @@ namespace IRB
                             break;
                         case "Marron":
                             mergedDictionaries.Add(new MarronLightTheme());
+                            break;
+                        case "Roxo":
+                            mergedDictionaries.Add(new RoxoLightTheme());
+                            break;
+                        case "Azul Escuro":
+                            mergedDictionaries.Add(new AzulEscuroLightTheme());
+                            break;
+                        case "Verde":
+                            mergedDictionaries.Add(new VerdeLightTheme());
+                            break;
+                        case "Amarelo":
+                            mergedDictionaries.Add(new AmareloLightTheme());
+                            break;
+                        case "Laranja":
+                            mergedDictionaries.Add(new LaranjaLightTheme());
+                            break;
+                        case "Laranja Escuro":
+                            mergedDictionaries.Add(new LaranjaEscuroLightTheme());
+                            break;
+                        case "Cinza":
+                            mergedDictionaries.Add(new CinzaLightTheme());
+                            break;
+                        case "Chumbo":
+                            mergedDictionaries.Add(new ChumboLightTheme());
                             break;
                         default:
                             mergedDictionaries.Add(new BlueLightTheme());

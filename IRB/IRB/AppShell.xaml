@@ -135,14 +135,14 @@
                           Route="CanDortVContent" Title="Cap. V"/>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Hinário" Route="HinarioFly">
+    <FlyoutItem Title="Hinários" Route="HinarioFly">
         <FlyoutItem.Icon>
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.RecordVinyl}"
                 Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="Prov. Maceió"
+        <Tab Title="Hinário Maceió"
              Route="HinarioMaceioTab">
             <Tab.Icon>
                 <FontImageSource
@@ -210,7 +210,7 @@
                           Route="RegimentoVContent" Title="Cap. V"/>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Formas" Route="FormasFly">
+    <FlyoutItem Title="Formas Litúrgicas" Route="FormasFly">
         <FlyoutItem.Icon>
             <FontImageSource
                     FontFamily="{StaticResource FontAwesomeRegular}"

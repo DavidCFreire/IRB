@@ -143,4 +143,55 @@
   <ItemGroup>
     <ProjectReference Include="..\..\IRB.Data\IRB.Data.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Themes\ChumboLightTheme.xaml.cs">
+      <DependentUpon>ChumboLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\ChumboDarkTheme.xaml.cs">
+      <DependentUpon>ChumboDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\CinzaLightTheme.xaml.cs">
+      <DependentUpon>CinzaLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\CinzaDarkTheme.xaml.cs">
+      <DependentUpon>CinzaDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\LaranjaEscuroLightTheme.xaml.cs">
+      <DependentUpon>LaranjaEscuroLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\LaranjaEscuroDarkTheme.xaml.cs">
+      <DependentUpon>LaranjaEscuroDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\LaranjaLightTheme.xaml.cs">
+      <DependentUpon>LaranjaLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\LaranjaDarkTheme.xaml.cs">
+      <DependentUpon>LaranjaDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\AmareloDarkTheme.xaml.cs">
+      <DependentUpon>AmareloDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\AmareloLightTheme.xaml.cs">
+      <DependentUpon>AmareloLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\VerdeLightTheme.xaml.cs">
+      <DependentUpon>VerdeLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\VerdeDarkTheme.xaml.cs">
+      <DependentUpon>VerdeDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\AzulEscuroDarkTheme.xaml.cs">
+      <DependentUpon>AzulEscuroDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\RoxoDarkTheme.xaml.cs">
+      <DependentUpon>RoxoDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\AzulEscuroLightTheme.xaml.cs">
+      <DependentUpon>AzulEscuroLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Themes\RoxoLightTheme.xaml.cs">
+      <DependentUpon>RoxoLightTheme.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

@@ -162,7 +162,12 @@ namespace IRB.ViewModels
         public string Pesquisa
         {
             get => _pesquisa;
-            set => SetProperty(ref _pesquisa, value);
+            set 
+            {
+                SetProperty(ref _pesquisa, value);
+                if (string.IsNullOrEmpty(value))
+                    Pesquisar();
+            } 
         }
     }
 }

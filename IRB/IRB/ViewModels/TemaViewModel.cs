@@ -24,8 +24,16 @@ namespace IRB.ViewModels
                 ObservableCollection<ThemeModel> load = new ObservableCollection<ThemeModel>();
                     //#5D4037
                 load.Add(new ThemeModel() { Name = "Vermelho", Color = "#D32F2F" });
+                load.Add(new ThemeModel() { Name = "Roxo", Color = "#7B1FA2" });
+                load.Add(new ThemeModel() { Name = "Azul Escuro", Color = "#303F9F" });
                 load.Add(new ThemeModel() { Name = "Azul", Color = "#1976D2" });
+                load.Add(new ThemeModel() { Name = "Verde", Color = "#388E3C" });
+                load.Add(new ThemeModel() { Name = "Amarelo", Color = "#FFA000" });
+                load.Add(new ThemeModel() { Name = "Laranja", Color = "#F57C00" });
+                load.Add(new ThemeModel() { Name = "Laranja Escuro", Color = "#E64A19" });
                 load.Add(new ThemeModel() { Name = "Marron", Color = "#5D4037" });
+                load.Add(new ThemeModel() { Name = "Cinza", Color = "#616161" });
+                load.Add(new ThemeModel() { Name = "Chumbo", Color = "#455A64" });
                 string defaultJson = JsonConvert.SerializeObject(new ThemeModel() { Name = "Azul", Color = "#1976D2" });
                 var savedJson = Preferences.Get(Settings.ThemeSelected, defaultJson);
                 _selectedTheme = JsonConvert.DeserializeObject<ThemeModel>(savedJson);
