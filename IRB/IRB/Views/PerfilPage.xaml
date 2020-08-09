@@ -9,7 +9,7 @@
              x:Class="IRB.Views.PerfilPage"
              Title="Mais">
     <ContentPage.Content>
-        <TableView Intent="Settings" HasUnevenRows="True">
+        <TableView Intent="Settings" HasUnevenRows="True" BackgroundColor="{DynamicResource Background}">
             <TableRoot>
                 <TableSection>
                     <ViewCell>
@@ -150,7 +150,7 @@
                         </Grid>
                     </ViewCell>
                     <ViewCell>
-                        <Grid Padding="16,16,0,16">
+                        <Grid Padding="16,16,0,16" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -180,13 +180,19 @@
                                         WidthRequest="40"
                                         CornerRadius="20"
                                         Margin="-10"
-                                        BackgroundColor="{DynamicResource Background}"
                                         Grid.Column="1"
+                                        BackgroundColor="{DynamicResource White}"
                                         FontFamily="{StaticResource FontAwesomeRegular}"
                                         Text="{x:Static fontawesome:FontAwesomeIcons.QuestionCircle}"
                                         TextColor="{DynamicResource TextDark}"
                                         Command="{Binding MessageCommand}"
                                         CommandParameter="Essa função habilita a verificação de atualizações nos documentos baixados.&#10;&#10;Sempre que houver uma atualização o app baixará automaticamente, caso esta opção esteja ativa.">
+                                    <!--<Button.BackgroundColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="{DynamicResource Background}"/>
+                                            <On Platform="Android" Value="{DynamicResource Background}"/>
+                                        </OnPlatform>
+                                    </Button.BackgroundColor>-->
                                 </Button>
                                 <Switch Grid.Column="2"
                                         IsToggled="{Binding ModoAutoSync}"/>

@@ -92,7 +92,7 @@ namespace IRB.ViewModels
                         };
                         await API.CreateUsuario(user);
                         IsBusy = false;
-                        Navigate(".");
+                        Navigate("..");
                     }
 
                     IsBusy = false;

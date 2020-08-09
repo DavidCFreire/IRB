@@ -23,7 +23,6 @@
             <Label Text="Usuario"
                    TextColor="{StaticResource Accent}"/>
             <Entry Grid.Row="1"
-                   Margin="0,-14,0,0"
                    HorizontalOptions="FillAndExpand"
                    TextColor="{StaticResource TextDark}"
                    Text="{Binding Usuario}"/>
@@ -36,7 +35,6 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Entry Grid.ColumnSpan="2"
-                   Margin="0,-14,0,0"
                    HorizontalOptions="FillAndExpand"
                    TextColor="{StaticResource TextDark}"
                    Text="{Binding Senha}"
@@ -73,22 +71,26 @@
                 <Button FontFamily="{StaticResource FontAwesomeBrands}" 
                             Text="{x:Static fontawesome:FontAwesomeIcons.Google}"
                             Command="{Binding GoogleLogin}"
-                        BackgroundColor="White"/>
+                        BackgroundColor="{DynamicResource White}"
+                        TextColor="{DynamicResource Black}"/>
                 <Button FontFamily="{StaticResource FontAwesomeBrands}" 
                             Text="{x:Static fontawesome:FontAwesomeIcons.Microsoft}"
                             Command="{Binding MicrosoftLogin}"
                         Grid.Column="1"
-                        BackgroundColor="White"/>
+                        BackgroundColor="{DynamicResource White}"
+                        TextColor="{DynamicResource Black}"/>
                 <Button FontFamily="{StaticResource FontAwesomeBrands}" 
                             Text="{x:Static fontawesome:FontAwesomeIcons.Facebook}"
                             Command="{Binding FacebookLogin}"
                         Grid.Column="2"
-                        BackgroundColor="White"/>
+                        BackgroundColor="{DynamicResource White}"
+                        TextColor="{DynamicResource Black}"/>
                 <Button FontFamily="{StaticResource FontAwesomeBrands}" 
                             Text="{x:Static fontawesome:FontAwesomeIcons.Instagram}"
                             Command="{Binding InstagramLogin}"
                         Grid.Column="3"
-                        BackgroundColor="White"/>
+                        BackgroundColor="{DynamicResource White}"
+                        TextColor="{DynamicResource Black}"/>
             </Grid>
             <Label Grid.Row="7"
                    HorizontalOptions="Center">
