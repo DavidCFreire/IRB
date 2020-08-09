@@ -17,7 +17,8 @@
                 <FontImageSource
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.SlidersH}"
-                    Size="22"/>
+                    Size="22"
+                    Color="{DynamicResource White}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>

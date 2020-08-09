@@ -36,8 +36,7 @@
                                    HorizontalOptions="Center"
                                    HeightRequest="5"/>
                 <Label Text="Titulo"
-                       TextColor="{StaticResource Accent}"
-                       Margin="0,0,0,-8"/>
+                       TextColor="{StaticResource Accent}"/>
                 <Entry Text="{Binding TITLE}"
                        Grid.Row="1"
                        TextColor="{DynamicResource TextDark}"
@@ -46,7 +45,7 @@
                 <Label Text="Detalhe"
                        Grid.Row="2"
                        TextColor="{DynamicResource Accent}"
-                       Margin="0,0,0,-8"/>
+                       Margin="0,8,0,0"/>
                 <Entry Text="{Binding PARTE}" 
                        Grid.Row="3"
                        TextColor="{DynamicResource TextDark}"

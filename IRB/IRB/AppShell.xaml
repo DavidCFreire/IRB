@@ -8,10 +8,12 @@
        Shell.BackgroundColor="{DynamicResource PrimaryLight}"
        Shell.TabBarForegroundColor="{DynamicResource TextDark}"
        Shell.TitleColor="{DynamicResource White}"
+       Shell.ForegroundColor="{DynamicResource White}"
        Shell.TabBarUnselectedColor="#50FFFFFF"
        Shell.DisabledColor="#B4FFFFFF"
        Shell.UnselectedColor="#50FFFFFF"
        FlyoutHeaderBehavior="CollapseOnScroll"
+       
        mc:Ignorable="d"
        xmlns:local="clr-namespace:IRB.Views"
        Title="IRB"
@@ -59,10 +61,7 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Search}"
                 Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="Pesquisa"
-             Route="PesquisaTab">
-            <ShellContent ContentTemplate="{DataTemplate local:PesquisaPage}" />
-        </Tab>
+        <ShellContent ContentTemplate="{DataTemplate local:PesquisaPage}" />
 
     </FlyoutItem>
     <FlyoutItem Title="Confissão Belga" Route="ConfBelgaFly">
@@ -72,11 +71,8 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Bookmark}"
                 Color="{DynamicResource TextDark}" />
         </FlyoutItem.Icon>
-        <Tab Title="Ler"
-             Route="ConfBelgaTab">
-            <ShellContent ContentTemplate="{DataTemplate local:ConfBelgaPage}"
+        <ShellContent ContentTemplate="{DataTemplate local:ConfBelgaPage}"
                           Route="ConfBelgaContent"/>
-        </Tab>
 
     </FlyoutItem>
     <FlyoutItem Title="Catecismo de Heidelberg" Route="CatHeidelbergFly">
@@ -196,8 +192,7 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.Church}"
                 Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="Capítulo"
-             Route="RegimentoITab">
+        <Tab Route="RegimentoITab">
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoIPage}"
                           Route="RegimentoIContent" Title="Cap. I"/>
             <ShellContent ContentTemplate="{DataTemplate local:RegimentoIIPage}"
@@ -217,11 +212,8 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.FileAlt}"
                 Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="Formas"
-             Route="FormasTab">
-            <ShellContent ContentTemplate="{DataTemplate local:FormasPage}"
+        <ShellContent ContentTemplate="{DataTemplate local:FormasPage}"
                           Route="FormasContent" Title="Formas Litúrgicas"/>
-        </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Mais" Route="MaisFly">
         <FlyoutItem.Icon>
@@ -229,10 +221,7 @@
                     Glyph="{x:Static fontawesome:FontAwesomeIcons.EllipsisH}"
                              Color="{DynamicResource TextDark}"/>
         </FlyoutItem.Icon>
-        <Tab Title="Mais"
-             Route="MaisTab">
-            <ShellContent ContentTemplate="{DataTemplate local:PerfilPage}" Route="MaisContent" />
-        </Tab>
+        <ShellContent ContentTemplate="{DataTemplate local:PerfilPage}" Route="MaisContent" />
     </FlyoutItem>
      <!--Optional Templates 
     // These may be provided inline as below or as separate classes.

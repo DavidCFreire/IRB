@@ -44,13 +44,19 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Frame BorderColor="{DynamicResource TextDark}" Padding="10,5" VerticalOptions="Start">
-                                <Grid VerticalOptions="Start">
+                                <Grid VerticalOptions="Start" RowSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label Text="Documento"/>
-                                    <Picker TextColor="{DynamicResource TextDark}" Title="Selecionar Documento" ItemDisplayBinding="{Binding TIPO}" ItemsSource="{Binding ListDocumentos}" Margin="-4,10,0,0" SelectedItem="{Binding DocumentoFilter}"/>
+                                    <Picker TextColor="{DynamicResource TextDark}" 
+                                            Title="Selecionar Documento" 
+                                            ItemDisplayBinding="{Binding TIPO}" 
+                                            ItemsSource="{Binding ListDocumentos}" 
+                                            Margin="-4,0,0,0" 
+                                            SelectedItem="{Binding DocumentoFilter}"
+                                            Grid.Row="1"/>
                                 </Grid>
                             </Frame>
                         </Grid>

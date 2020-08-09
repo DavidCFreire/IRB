@@ -11,13 +11,13 @@ namespace IRB.Services
     {
         public async void NavigateTo(object route)
         {
-            if (route.ToString() == "..")
+            if (route.ToString() == "...")
             {
                 await Shell.Current.Navigation.PopToRootAsync();
             }
-            else if(route.ToString() == ".")
+            else if(route.ToString() == "..")
             {
-                await Shell.Current.Navigation.PopAsync();
+                await Shell.Current.GoToAsync(route.ToString());
             }
             else
             {
